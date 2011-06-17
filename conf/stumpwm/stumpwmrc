@@ -1,0 +1,19 @@
+;; Hey, Emacs! This is a -*- lisp -*- file!
+(in-package :stumpwm)
+
+;; GNOME Integration
+(run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
+(run-shell-command "gnome-power-manager")
+(run-shell-command "nm-applet --sm-disable") 
+(run-shell-command "~/bin/volume-control")
+
+;; media hotkeys for laptops / netbooks
+(load-module "amixer")
+(define-key *top-map* (kbd "XF86AudioLowerVolume")   "amixer-PCM-1-")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume")   "amixer-PCM-1+")
+
+;; my hotkeys
+(define-key *root-map* (kbd "d") "exec google-chrome")
+(define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
+(define-key *root-map* (kbd "DEL") "quit")
+
