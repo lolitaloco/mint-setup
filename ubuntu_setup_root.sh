@@ -5,7 +5,7 @@ apt-get update -y
 apt-get upgrade -y
 
 # Install StumpWM and dependencies
-apt-get install -y stumpwm network-manager-gnome trayer cl-swank cl-clx-sbcl
+apt-get install -y stumpwm network-manager-gnome trayer cl-swank cl-clx-sbcl xloadimage
 cp -f $(pwd)/conf/stumpwm/stumpwm.desktop /usr/share/xsessions/stumpwm.desktop
 
 # Set up and install media players etc.
