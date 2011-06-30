@@ -17,3 +17,5 @@
 (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
 (define-key *root-map* (kbd "DEL") "quit")
 
+;; set your wallpaper like this
+(run-shell-command "xsetbg -border black -center /full/path/to/wallpaper.jpg")
