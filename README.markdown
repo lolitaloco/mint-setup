@@ -32,7 +32,7 @@ Clone the mint-setup repo, cd into it, then:
 troubleshooting
 ---------------
 ### _vesamenu.c32 : not a COM32R image_
-See (Issue 5)[https://github.com/duncan-bayne/mint-setup/issues/5] for details and a workaround.
+See [Issue 5](https://github.com/duncan-bayne/mint-setup/issues/5) for details and a workaround.
 ### other
 Experiencing a problem that isn't listed above?  Check the [issues](https://github.com/duncan-bayne/mint-setup/issues) page for an existing issue, or add one of your own.
  
