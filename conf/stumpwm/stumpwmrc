@@ -3,10 +3,9 @@
 
 ;; GNOME Integration
 (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
-(run-shell-command "gnome-power-manager")
-(run-shell-command "nm-applet --sm-disable") 
-(run-shell-command "gnome-volume-control-applet")
-(run-shell-command "gnome-settings-daemon")
+(run-shell-command "nm-applet --sm-disable")
+(run-shell-command "mate-volume-control-applet") 
+
 
 ;; media hotkeys for laptops / netbooks
 (load-module "amixer")
