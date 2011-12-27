@@ -20,6 +20,7 @@ They perform the following steps:
 I've tested them on the following systems:
 
 1. 64-bit Linux Mint 12 on a MacBook Pro
+1. 32-bit Linux Mint 12 on an Asus EeePC R101 
 
 usage
 -----
@@ -27,6 +28,15 @@ Clone the mint-setup repo, cd into it, then:
 
     sudo ./mint-setup-root.sh
     ./mint-setup-user.sh
+
+troubleshooting
+---------------
+* _vesamenu.c32 : not a COM32R image_  If you experience a failure to boot from a Linux Mint USB stick, DVD or CD with that error message, type 'live' and press ENTER.  See [here](http://forums.linuxmint.com/viewtopic.php?f=46&t=60436) for details.
+
+roadmap
+-------
+1. test on a variety of 64- and 32-bit systems
+1. upgrade from Bash to a more modern approach (Babushka?)
 
 licence
 -------
