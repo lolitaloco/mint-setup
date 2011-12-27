@@ -31,7 +31,8 @@ Clone the mint-setup repo, cd into it, then:
 
 troubleshooting
 ---------------
-* _vesamenu.c32 : not a COM32R image_  If you experience a failure to boot from a Linux Mint USB stick, DVD or CD with that error message, type 'live' and press ENTER.  See [here](http://forums.linuxmint.com/viewtopic.php?f=46&t=60436) for details.
+### _vesamenu.c32 : not a COM32R image_
+If you experience a failure to boot from a Linux Mint USB stick, DVD or CD with that error message, type 'live' and press ENTER.  See [here](http://forums.linuxmint.com/viewtopic.php?f=46&t=60436) for details.
 
 roadmap
 -------
