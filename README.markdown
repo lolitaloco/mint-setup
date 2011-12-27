@@ -32,12 +32,13 @@ Clone the mint-setup repo, cd into it, then:
 troubleshooting
 ---------------
 ### _vesamenu.c32 : not a COM32R image_
-If you experience a failure to boot from a Linux Mint USB stick, DVD or CD with that error message, type 'live' and press ENTER.  See [here](http://forums.linuxmint.com/viewtopic.php?f=46&t=60436) for details.
-
+See (Issue 5)[https://github.com/duncan-bayne/mint-setup/issues/5] for details and a workaround.
+### other
+Experiencing a problem that isn't listed above?  Check the [issues](https://github.com/duncan-bayne/mint-setup/issues) page for an existing issue, or add one of your own.
+ 
 roadmap
 -------
-1. test on a variety of 64- and 32-bit systems
-1. upgrade from Bash to a more modern approach (Babushka?)
+See the [milestones](https://github.com/duncan-bayne/mint-setup/issues/milestones) page.
 
 licence
 -------
