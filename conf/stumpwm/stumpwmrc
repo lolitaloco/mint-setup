@@ -5,12 +5,7 @@
 (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
 (run-shell-command "nm-applet --sm-disable")
 (run-shell-command "mate-volume-control-applet") 
-
-
-;; media hotkeys for laptops / netbooks
-(load-module "amixer")
-(define-key *top-map* (kbd "XF86AudioLowerVolume")   "amixer-PCM-1-")
-(define-key *top-map* (kbd "XF86AudioRaiseVolume")   "amixer-PCM-1+")
+(run-shell-command "gnome-settings-daemon")
 
 ;; my hotkeys
 (define-key *root-map* (kbd "d") "exec google-chrome")
@@ -20,3 +15,4 @@
 ;; startup stuff
 (run-shell-command "xsetbg -border black -center /home/duncan/personal/images/default_desktop.jpg")
 (run-shell-command "emacs")
+
