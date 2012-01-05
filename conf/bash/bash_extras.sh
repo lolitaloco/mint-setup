@@ -5,6 +5,7 @@ alias be='bundle exec'
 alias ber='bundle exec rake'
 alias gco='git checkout'
 alias ga='git add'
+alias gd='git diff --color'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 rvm 1.9.2
