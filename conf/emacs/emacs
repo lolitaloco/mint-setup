@@ -94,15 +94,12 @@
     (progn
       (setq multi-term-program "/bin/bash")
       (require 'multi-term)
-      (multi-term)
-      (set-buffer "*terminal<1>*")
-      (rename-buffer "*tests*")
-      (multi-term)
-      (set-buffer "*terminal<1>*")
-      (rename-buffer "*procs*")
-      (multi-term)
-      (set-buffer "*terminal<1>*")
-      (rename-buffer "*misc*")))
+      (mapcar 
+        (lambda (desired-name)
+          (multi-term)
+          (set-buffer "*terminal<1>*")
+	  (rename-buffer desired-name))
+	'("*tests*" "*server*" "*guard*" "*misc*"))))
 
 ;; YAML mode
 ;; http://www.emacswiki.org/emacs/YamlMode
