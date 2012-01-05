@@ -1,5 +1,12 @@
 (setq inhibit-splash-screen t)
 
+;; adds each path in path-list to the load path
+(defun add-to-load-path (path-list)
+  (mapcar
+    (lambda (path) 
+      (add-to-list 'load-path path))
+    path-list))
+
 ;; hide the tool bar but show the menu bar
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -17,22 +24,23 @@
  '(default ((t (:background "white" :foreground "black")))))
 
 ;; paths containing additional .el files
-(add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/multiterm")
-(add-to-list 'load-path "~/.emacs.d/ruby-mode")
-(add-to-list 'load-path "~/.emacs.d/psvn")
-(add-to-list 'load-path "~/.emacs.d/ccrypt")
-(add-to-list 'load-path "~/.emacs.d/yaml-mode")
-(add-to-list 'load-path "~/.emacs.d/vbnet-mode")
-(add-to-list 'load-path "~/.emacs.d/duncans_emacs")
-(add-to-list 'load-path "~/.emacs.d/cucumber.el")
-(add-to-list 'load-path "~/.emacs.d/php-mode")
-(add-to-list 'load-path "~/.emacs.d/inform-mode")
-(add-to-list 'load-path "~/.emacs.d/haml-mode")
-(add-to-list 'load-path "~/.emacs.d/sass-mode")
-(add-to-list 'load-path "~/.emacs.d/slime")
-(add-to-list 'load-path "~/.emacs.d/coffee-mode")
-(add-to-list 'load-path "~/.emacs.d/undo-tree")
+(add-to-load-path
+ '("~/.emacs.d" 
+   "~/.emacs.d/multiterm" 
+   "~/.emacs.d/ruby-mode" 
+   "~/.emacs.d/psvn" 
+   "~/.emacs.d/ccrypt" 
+   "~/.emacs.d/yaml-mode" 
+   "~/.emacs.d/vbnet-mode" 
+   "~/.emacs.d/duncans_emacs" 
+   "~/.emacs.d/cucumber.el" 
+   "~/.emacs.d/php-mode" 
+   "~/.emacs.d/inform-mode" 
+   "~/.emacs.d/haml-mode" 
+   "~/.emacs.d/sass-mode" 
+   "~/.emacs.d/slime" 
+   "~/.emacs.d/coffee-mode" 
+   "~/.emacs.d/undo-tree"))
 
 ;; Emacs itself
 (setq auto-mode-alist (cons '("emacs$" . lisp-mode) auto-mode-alist))
