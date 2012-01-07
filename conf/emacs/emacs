@@ -1,11 +1,8 @@
 (setq inhibit-splash-screen t)
 
-;; adds each path in path-list to the load path
-(defun add-to-load-path (path-list)
-  (mapcar
-    (lambda (path) 
-      (add-to-list 'load-path path))
-    path-list))
+;; my own extensions
+(add-to-list 'load-path "~/.emacs.d/duncans_emacs")
+(require 'duncans_emacs)
 
 ;; hide the tool bar but show the menu bar
 (tool-bar-mode 0)
@@ -24,7 +21,7 @@
  '(default ((t (:background "white" :foreground "black")))))
 
 ;; paths containing additional .el files
-(add-to-load-path
+(duncans_emacs:add-to-load-path
  '("~/.emacs.d" 
    "~/.emacs.d/multiterm" 
    "~/.emacs.d/ruby-mode" 
@@ -32,7 +29,6 @@
    "~/.emacs.d/ccrypt" 
    "~/.emacs.d/yaml-mode" 
    "~/.emacs.d/vbnet-mode" 
-   "~/.emacs.d/duncans_emacs" 
    "~/.emacs.d/cucumber.el" 
    "~/.emacs.d/php-mode" 
    "~/.emacs.d/inform-mode" 
@@ -45,33 +41,53 @@
 ;; Emacs itself
 (setq auto-mode-alist (cons '("emacs$" . lisp-mode) auto-mode-alist))
 
-;; Ruby
+;; Ruby (thanks to http://stackoverflow.com/users/523044/tyler)
 (global-font-lock-mode 1)
 (autoload 'ruby-mode "ruby-mode" "Ruby editing mode." t)
-(setq auto-mode-alist (cons '("\\.rb$" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.rsel$" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.rhtml$" . html-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.erb$" . html-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.prawn$" . html-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("Rakefile$" . ruby-mode) auto-mode-alist))
+(duncans_emacs:set-mode 
+ 'ruby-mode
+ '("\\.rb$"
+   "\\.rsel$"
+   "\\.rhtml$"
+   "\\.erb$" 
+   "\\.prawn$"
+   "Rakefile$"
+   "Gemfile$"))
 
 ;; HAML
 (require 'haml-mode)
-(setq auto-mode-alist (cons '("\\.haml$" . haml-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.hamljs$" . haml-mode) auto-mode-alist))
+(duncans_emacs:set-mode
+ 'haml-mode
+ '("\\.haml$"
+   "\\.hamljs$"))
 
 ;; Coffeescript
 (require 'coffee-mode)
-(setq auto-mode-alist (cons '("\\.coffee$" . coffee-mode) auto-mode-alist))
+(duncans_emacs:set-mode 'coffee-mode '("\\.coffee$"))
 
 ;; SASS
 (require 'sass-mode)
-(setq auto-mode-alist (cons '("\\.sass$" . sass-mode) auto-mode-alist))
+(duncans_emacs:set-mode 'sass-mode '("\\.sass$"))
 
-;; feature-mode (Cucumber)
+;; Cucumber
 (require 'feature-mode)
 (autoload 'feature-mode "feature-mode" "Cucumber feature editing mode." t)
-(setq auto-mode-alist (cons '("\\.feature$" . feature-mode) auto-mode-alist))
+(duncans_emacs:set-mode 'feature-mode '("\\.feature$"))
+
+;; YAML
+;; http://www.emacswiki.org/emacs/YamlMode
+(require 'yaml-mode)
+(duncans_emacs:set-mode 'yaml-mode '("\\.yml$"))
+(add-hook 'yaml-mode-hook '(lambda () (define-key yaml-mode-map "\C-m" 'newline-and-indent))) 
+
+;; PHP
+(require 'php-mode)
+
+;; Inform support
+(autoload 'inform-mode "inform-mode" "Inform editing mode." t)
+(autoload 'inform-maybe-mode "inform-mode" "Inform/C header editing mode.")
+(duncans_emacs:set-mode 'inform-maybe-mode '("\\.h\\'"))
+(duncans_emacs:set-mode 'inform-mode '("\\.inf\\'"))
 
 ;; modern Emacs behaviour; see http://xahlee.org/emacs/emacs_make_modern.html
 (cua-mode)
@@ -99,26 +115,11 @@
 ;; launch some shells unless we're in Windows
 (if (and 
      (not (equal system-type 'windows-nt)))
-    (progn
-      (setq multi-term-program "/bin/bash")
-      (require 'multi-term)
-      (mapcar 
-        (lambda (desired-name)
-          (multi-term)
-          (set-buffer "*terminal<1>*")
-	  (rename-buffer desired-name))
-	'("*tests*" "*server*" "*guard*" "*misc*"))))
-
-;; YAML mode
-;; http://www.emacswiki.org/emacs/YamlMode
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-hook 'yaml-mode-hook '(lambda () (define-key yaml-mode-map "\C-m" 'newline-and-indent))) 
-
-;; VB.NET mode, may be a bit dodgy but better than going blind staring at plain-white VB.NET
-;; http://www.emacswiki.org/cgi-bin/wiki/download/vbnet-mode.el
-(autoload 'vbnet-mode "vbnet-mode" "Visual Basic mode." t)
-(setq auto-mode-alist (append '(("\\.\\(frm\\|bas\\|vb\\|cls\\)$" . vbnet-mode)) auto-mode-alist))
+    (duncans_emacs:create-terminals 
+     '("*tests*" 
+       "*server*" 
+       "*guard*" 
+       "*misc*")))
 
 ;; show full path in title bar
 ;; thanks to: http://www.arminsadeghi.com/slickedit_and_emacs
@@ -129,25 +130,11 @@
 					 (revert-buffer-function " %b"
 								 ("%b - Dir:  " default-directory))))))) 
 
-;; PHP support
-(require 'php-mode)
-
 ;; SLIME
 (require 'slime)
 (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
 (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 (setq inferior-lisp-program "sbcl") 
-
-;; Inform support
-(autoload 'inform-mode "inform-mode" "Inform editing mode." t)
-(autoload 'inform-maybe-mode "inform-mode" "Inform/C header editing mode.")
-(setq auto-mode-alist
-      (append '(("\\.h\\'"   . inform-maybe-mode)
-                ("\\.inf\\'" . inform-mode))
-              auto-mode-alist))
-
-;; Objective-C mode for .j files 
-(add-to-list 'auto-mode-alist '("\\.j$" . objc-mode))
 
 ;; some Steve Yegge wisdom; see http://sites.google.com/site/steveyegge2/effective-emacs
 (global-set-key "\C-w" 'backward-kill-word)
@@ -158,5 +145,3 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-;; my own extensions
-(require 'duncans_emacs)

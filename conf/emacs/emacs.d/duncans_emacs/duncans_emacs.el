@@ -17,9 +17,35 @@
   "Kill any unmodifier buffers that are inspecting files."
   (interactive)
   (mapcar 
-    '(lambda (buf)
+   '(lambda (buf)
       (if (and (buffer-file-name buf) (not (buffer-modified-p buf)))
-        (kill-buffer buf)))
-    (buffer-list)))
+	  (kill-buffer buf)))
+   (buffer-list)))
+
+(defun duncans_emacs:add-to-load-path (path-list)
+  "Adds each path in path-list to the load path."
+  (mapcar
+   (lambda (path) 
+     (add-to-list 'load-path path))
+   path-list))
+
+(defun duncans_emacs:set-mode (mode filename-pattern-list)
+  "Sets the specified mode for each filename pattern in filename-pattern-list."
+  (mapcar
+   (lambda (filename-pattern)
+     (setq 
+      auto-mode-alist 
+      (cons (cons filename-pattern mode) auto-mode-alist)))
+   filename-pattern-list))
+
+(defun duncans_emacs:create-terminals (terminal-names)
+  "Creates terminals with the specified names using multi-term."
+  (require 'multi-term)
+  (setq multi-term-program "/bin/bash")
+  (mapcar 
+   (lambda (desired-name)
+     (multi-term)
+     (set-buffer "*terminal<1>*")
+     (rename-buffer desired-name))   terminal-names))
 
 (provide 'duncans_emacs)
