@@ -52,7 +52,8 @@
    "\\.erb$" 
    "\\.prawn$"
    "Rakefile$"
-   "Gemfile$"))
+   "Gemfile$"
+   "Guardfile$"))
 
 ;; HAML
 (require 'haml-mode)
