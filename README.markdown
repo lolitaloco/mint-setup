@@ -20,7 +20,8 @@ They perform the following steps:
 I've tested them on the following systems:
 
 1. 64-bit Linux Mint 12 on a MacBook Pro
-1. 32-bit Linux Mint 12 on an Asus EeePC R101 
+1. 32-bit Linux Mint 12 on an Asus EeePC R101
+1. 32-bit Linux Mint 12 on an HP Mini 110
 
 usage
 -----
