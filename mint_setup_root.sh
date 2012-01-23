@@ -25,6 +25,10 @@ apt-get update
 apt-key adv --keyserver pgp.mit.edu --recv-keys 0xd66b746e
 apt-get install -y --force-yes skype
 
+# Install CoffeeScript
+apt-get -y install npm
+npm install -g coffee-script
+
 # Install miscellaneous stuff
 apt-get -y install emacs k3b ccrypt eclipse autoconf libusb-dev xclip pdftk gqview gimp gnome-rdp xtightvncviewer lyx latex2html lynx pwgen dosbox tofrodos gettext net-tools audacity lame php5-cli php5-curl gparted vice dia frotz inform wine curl xsane libxine1-ffmpeg build-essential git-core subversion shtool libxslt-dev libssl-dev libpq-dev
 
