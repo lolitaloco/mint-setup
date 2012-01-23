@@ -7,7 +7,6 @@
       (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
       (run-shell-command "nm-applet --sm-disable")
       (run-shell-command "mate-volume-control-applet") 
-      (run-shell-command "gnome-settings-daemon")
        
       ;; my hotkeys
       (define-key *root-map* (kbd "d") "exec google-chrome")
@@ -16,4 +15,7 @@
        
       ;; startup stuff
       (run-shell-command (concatenate 'string "xsetbg -border black -center " home "/Pictures/stumpwm_wallpaper.jpg"))
-      (run-shell-command "emacs"))
+      (run-shell-command "emacs")
+
+      ;; swap CAPS and CTRL
+      (run-shell-command "setxkbmap -option ctrl:swapcaps"))
