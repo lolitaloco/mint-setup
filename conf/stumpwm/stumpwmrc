@@ -20,6 +20,12 @@
   "Toggle volume mute via amixer"
   (amixer-set-master "toggle"))
 
+(defcommand suspend () ()
+  "Suspends the system (to RAM)"
+  (run-shell-command 
+   "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend" 
+   t))
+
 (let ((home (sb-unix::posix-getenv "HOME")))
   
   ;; GNOME Integration
@@ -30,7 +36,7 @@
   (define-key *root-map* (kbd "d") "exec google-chrome")
   (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
   (define-key *root-map* (kbd "DEL") "quit")
-  (define-key *root-map* (kbd "q") "exec dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
+  (define-key *root-map* (kbd "q") "suspend")
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
