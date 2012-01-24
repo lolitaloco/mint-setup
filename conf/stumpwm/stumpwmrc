@@ -1,24 +1,43 @@
 ;; Hey, Emacs! This is a -*- lisp -*- file!
 (in-package :stumpwm)
 
+(defun amixer-set-master (set-to)
+  "Uses amixer to set Master, echoing that part of the response that includes the volume."
+  (message 
+   (run-shell-command 
+    (concatenate 'string "amixer set Master " set-to " | grep '\[*%\]'")
+    t)))
+
+(defcommand raise-volume () ()
+  "Raise volume via amixer"
+  (amixer-set-master "5+"))
+
+(defcommand lower-volume () ()
+  "Lower volume via amixer"
+  (amixer-set-master "5-"))
+
+(defcommand toggle-mute-volume () ()
+  "Toggle volume mute via amixer"
+  (amixer-set-master "toggle"))
+
 (let ((home (sb-unix::posix-getenv "HOME")))
-      
-      ;; GNOME Integration
-      (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
-      (run-shell-command "nm-applet --sm-disable")
-       
-      ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
-      (define-key *root-map* (kbd "d") "exec google-chrome")
-      (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
-      (define-key *root-map* (kbd "DEL") "quit")
-      (define-key *root-map* (kbd "q") "exec dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
-      (define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5+")
-      (define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5-")
-      (define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
+  
+  ;; GNOME Integration
+  (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
+  (run-shell-command "nm-applet --sm-disable")
+  
+  ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
+  (define-key *root-map* (kbd "d") "exec google-chrome")
+  (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
+  (define-key *root-map* (kbd "DEL") "quit")
+  (define-key *root-map* (kbd "q") "exec dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
+  (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
+  (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
+  (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
 
-      ;; startup stuff
-      (run-shell-command (concatenate 'string "xsetbg -border black -center " home "/Pictures/stumpwm_wallpaper.jpg"))
-      (run-shell-command "emacs")
+  ;; startup stuff
+  (run-shell-command (concatenate 'string "xsetbg -border black -center " home "/Pictures/stumpwm_wallpaper.jpg"))
+  (run-shell-command "emacs")
 
-      ;; swap CAPS and CTRL
-      (run-shell-command "setxkbmap -option ctrl:swapcaps"))
+  ;; swap CAPS and CTRL
+  (run-shell-command "setxkbmap -option ctrl:swapcaps"))
