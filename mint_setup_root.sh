@@ -15,7 +15,7 @@ ln /usr/bin/g++-4.5 /usr/bin/g++
 
 # Install StumpWM and dependencies
 apt-get purge -y pulseaudio
-apt-get install -y stumpwm network-manager-gnome trayer cl-swank cl-clx-sbcl xloadimage amixer
+apt-get install -y stumpwm network-manager-gnome trayer cl-swank cl-clx-sbcl xloadimage alsa-utils
 cp -f $(pwd)/conf/stumpwm/stumpwm.desktop /usr/share/xsessions/stumpwm.desktop
 
 # Install Google Chrome
