@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Update and upgrade from all repositories
 apt-get update -y
@@ -7,6 +8,8 @@ apt-get upgrade -y
 # Downgrade to GCC 4.5
 apt-get -y purge gcc
 apt-get -y install gcc-4.5 g++-4.5 build-essential
+if [ -e /usr/bin/gcc ]; then rm -f /usr/bin/gcc ; fi
+if [ -e /usr/bin/g++ ]; then rm -f /usr/bin/g++ ; fi
 ln /usr/bin/gcc-4.5 /usr/bin/gcc
 ln /usr/bin/g++-4.5 /usr/bin/g++ 
 
@@ -31,7 +34,7 @@ apt-get -y install npm
 npm install -g coffee-script
 
 # Install miscellaneous stuff
-apt-get -y install emacs k3b ccrypt eclipse autoconf libusb-dev xclip pdftk gqview gimp gnome-rdp xtightvncviewer lyx latex2html lynx pwgen dosbox tofrodos gettext net-tools audacity lame php5-cli php5-curl gparted vice dia frotz inform wine curl xsane libxine1-ffmpeg build-essential git-core subversion shtool libxslt-dev libssl-dev libpq-dev inotify-tools libnotify-bin acidrip libsqlite3-dev
+apt-get -y install emacs k3b ccrypt eclipse autoconf libusb-dev xclip pdftk gqview gimp gnome-rdp xtightvncviewer lyx latex2html lynx pwgen dosbox tofrodos gettext net-tools audacity lame php5-cli php5-curl gparted vice dia frotz inform wine curl xsane libxine1-ffmpeg git-core subversion shtool libxslt-dev libssl-dev libpq-dev inotify-tools libnotify-bin acidrip libsqlite3-dev
 
 # Install LISP stuff
 apt-get -y install guile-1.8 sbcl plt-scheme

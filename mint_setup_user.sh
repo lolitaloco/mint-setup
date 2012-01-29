@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo Linking custom config
 if [ ! -f ~/.xinitrc   ]; then ln -s $(pwd)/conf/x/xinitrc ~/.xinitrc           ; fi  
