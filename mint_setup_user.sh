@@ -34,7 +34,7 @@ bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscr
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 rvm remove 1.9.2 
 rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr
-rvm 1.9.2
+rvm --default use 1.9.2
 gem install bundler
 
 echo Configuring Gnome to be less intrusive
