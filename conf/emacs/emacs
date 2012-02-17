@@ -51,6 +51,7 @@
    "\\.rhtml$"
    "\\.erb$" 
    "\\.prawn$"
+   "\\.rake$"
    "Rakefile$"
    "Gemfile$"
    "Guardfile$"))
