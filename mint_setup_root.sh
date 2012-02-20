@@ -22,6 +22,7 @@ cp -f $(pwd)/conf/stumpwm/stumpwm.desktop /usr/share/xsessions/stumpwm.desktop
 echo "deb http://dl.google.com/linux/deb/ stable non-free main #Google" | tee -a /etc/apt/sources.list > /dev/null
 apt-get update
 apt-get install -y --force-yes google-chrome-stable
+apt-get upgrade -y google-chrome
 
 # Install Skype
 echo "deb http://download.skype.com/linux/repos/debian/ stable non-free #Skype" | tee -a /etc/apt/sources.list > /dev/null
@@ -29,8 +30,8 @@ apt-get update
 apt-key adv --keyserver pgp.mit.edu --recv-keys 0xd66b746e
 apt-get install -y --force-yes skype
 
-# Install CoffeeScript
-apt-get -y install npm
+# Install Coffeescript
+curl http://npmjs.org/install.sh | sh
 npm install -g coffee-script
 
 # Install miscellaneous stuff

@@ -12,7 +12,7 @@ then
     echo Bash confugration extras already added to ~/.bashrc.
 else
     echo Adding custom Bash setup
-    mkdir ~/bin
+    if [ ! -d ~/bin ]; then mkdir ~/bin ; fi
     echo >> ~/.bashrc
     echo \# Personal Bash configuration extras, added by ubuntu_setup.sh >> ~/.bashrc
     echo \# 037b7c29-5804-43e2-8054-d1ebfb0f3293 >> ~/.bashrc
@@ -32,9 +32,9 @@ chmod a+x ~/bin/winetricks.sh
 echo Setting up RVM
 bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-rvm remove 1.9.2 
-rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr
-rvm --default use 1.9.2
+rvm remove 1.9.3
+rvm install 1.9.3 -C --with-openssl-dir=$HOME/.rvm/usr
+rvm --default use 1.9.3
 gem install bundler
 
 echo Configuring Gnome to be less intrusive
