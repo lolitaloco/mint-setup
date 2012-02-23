@@ -27,9 +27,9 @@
    t))
 
 (defcommand show-battery-state () ()
-  "Shows the state of BAT0"
+  "Shows the state of the first battery"
   (run-shell-command
-   "echo `grep --color=never 'design capacity:' /proc/acpi/battery/BAT0/info`, `grep --color=never 'remaining capacity:' /proc/acpi/battery/BAT0/state`"
+   "echo `grep --color=never 'design capacity:' /proc/acpi/battery/BAT?/info`, `grep --color=never 'remaining capacity:' /proc/acpi/battery/BAT?/state`"
    t))
 
 (let ((home (sb-unix::posix-getenv "HOME")))
