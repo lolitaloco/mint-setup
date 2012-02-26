@@ -36,7 +36,8 @@
    "~/.emacs.d/sass-mode" 
    "~/.emacs.d/slime" 
    "~/.emacs.d/coffee-mode" 
-   "~/.emacs.d/undo-tree"))
+   "~/.emacs.d/undo-tree"
+   "~/.emacs.d/emms"))
 
 ;; Emacs itself
 (setq auto-mode-alist (cons '("emacs$" . lisp-mode) auto-mode-alist))
@@ -155,3 +156,7 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+;; EMMS
+(require 'emms-setup)
+(emms-standard)
+(emms-default-players)
