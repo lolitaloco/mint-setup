@@ -152,6 +152,9 @@
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
 
+;; https://github.com/duncan-bayne/mint-setup/issues/16 (Emacs: content-search across code files)
+(global-set-key (kbd "C-x F") 'find-name-dired)
+
 ;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
