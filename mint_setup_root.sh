@@ -41,7 +41,19 @@ apt-get -y install guile-1.8 sbcl plt-scheme
 # Configure VICE
 cp -R $(pwd)/conf/vice/* /usr/lib/vice -R
 
-# Purge GNU CLisp and force StumpWM to use SBCL instead
+# Build SBCL from source, so we're using a good version with threading enabled
+apt-get -y install clisp
+mkdir /tmp/sbcl
+cp $(pwd)/src/sbcl-1.0.57-source.tar.gz /tmp/sbcl
+pushd /tmp/sbcl
+tar -zxvf sbcl-1.0.57-source.tar.gz
+cd sbcl-1.0.57
+sh make.sh clisp --with-sb-thread --fancy
+INSTALL_ROOT=/usr/local sh install.sh
+popd
+rm -rf /tmp/sbcl
+
+# Make StumpWM use SBCL, not CLISP
 apt-get purge -y clisp
 if !(grep -q sbcl /etc/profile)
   then echo export LISP=sbcl >> /etc/profile
