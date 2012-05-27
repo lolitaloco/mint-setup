@@ -24,12 +24,6 @@ apt-get update
 apt-get install -y --force-yes google-chrome-stable
 apt-get upgrade -y google-chrome
 
-# Install Skype
-echo "deb http://download.skype.com/linux/repos/debian/ stable non-free #Skype" | tee -a /etc/apt/sources.list > /dev/null
-apt-get update
-apt-key adv --keyserver pgp.mit.edu --recv-keys 0xd66b746e
-apt-get install -y --force-yes skype
-
 # Install Coffeescript
 curl http://npmjs.org/install.sh | sh
 npm install -g coffee-script
