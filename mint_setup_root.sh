@@ -19,7 +19,9 @@ apt-get install -y stumpwm network-manager-gnome trayer cl-swank cl-clx-sbcl xlo
 cp -f $(pwd)/conf/stumpwm/stumpwm.desktop /usr/share/xsessions/stumpwm.desktop
 
 # Install Google Chrome
-echo "deb http://dl.google.com/linux/deb/ stable non-free main #Google" | tee -a /etc/apt/sources.list > /dev/null
+if !(grep -q google /etc/apt/sources.list)
+  then echo "deb http://dl.google.com/linux/deb/ stable non-free main #Google" | tee -a /etc/apt/sources.list > /dev/null
+fi
 apt-get update
 apt-get install -y --force-yes google-chrome-stable
 apt-get upgrade -y google-chrome
