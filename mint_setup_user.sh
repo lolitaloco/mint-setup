@@ -40,3 +40,7 @@ gem install bundler
 echo Configuring Gnome to be less intrusive
 gconftool-2 -s -t bool /apps/nautilus/preferences/show_desktop false
 gconftool-2 -s -t bool /desktop/gnome/background/draw_background false
+
+echo Installing QuickLisp
+curl -O http://beta.quicklisp.org/quicklisp.lisp
+sbcl --load quicklisp.lisp --eval "(quicklisp-quickstart:install)"
