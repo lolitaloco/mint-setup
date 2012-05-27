@@ -24,6 +24,9 @@ apt-get update
 apt-get install -y --force-yes google-chrome-stable
 apt-get upgrade -y google-chrome
 
+# Install Skype (should be in Mint repos)
+apt-get install -y skype
+
 # Install Coffeescript
 curl http://npmjs.org/install.sh | sh
 npm install -g coffee-script
