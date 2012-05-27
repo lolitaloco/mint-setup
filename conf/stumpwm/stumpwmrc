@@ -32,6 +32,11 @@
    "echo `grep --color=never 'design capacity:' /proc/acpi/battery/BAT?/info`, `grep --color=never 'remaining capacity:' /proc/acpi/battery/BAT?/state`"
    t))
 
+(defcommand screen-saver () ()
+  "Turns off the screen until a key is pressed"
+  (run-shell-command
+   "sleep 1;xset dpms force off"))
+
 (let ((home (sb-unix::posix-getenv "HOME")))
   
   ;; GNOME Integration
@@ -44,6 +49,7 @@
   (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
   (define-key *root-map* (kbd "DEL") "quit")
   (define-key *root-map* (kbd "q") "suspend")
+  (define-key *root-map* (kbd "L") "screen-saver")
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
