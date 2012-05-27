@@ -28,6 +28,7 @@ apt-get upgrade -y google-chrome
 apt-get install -y skype
 
 # Install Coffeescript
+apt-get install -y curl nodejs
 curl http://npmjs.org/install.sh | sh
 npm install -g coffee-script
 
