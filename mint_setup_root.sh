@@ -46,10 +46,10 @@ cp -R $(pwd)/conf/vice/* /usr/lib/vice -R
 # Build SBCL from source, so we're using a good version with threading enabled
 apt-get -y install clisp
 mkdir /tmp/sbcl
-cp $(pwd)/src/sbcl-1.0.57-source.tar.gz /tmp/sbcl
+cp $(pwd)/src/sbcl-1.0.54-source.tar.gz /tmp/sbcl
 pushd /tmp/sbcl
-tar -zxvf sbcl-1.0.57-source.tar.gz
-cd sbcl-1.0.57
+tar -zxvf sbcl-1.0.54-source.tar.gz
+cd sbcl-1.0.54
 sh make.sh clisp --with-sb-thread --fancy
 INSTALL_ROOT=/usr/local sh install.sh
 popd
