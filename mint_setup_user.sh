@@ -43,4 +43,4 @@ gconftool-2 -s -t bool /desktop/gnome/background/draw_background false
 
 echo Installing QuickLisp
 curl -O http://beta.quicklisp.org/quicklisp.lisp
-sbcl --load quicklisp.lisp --eval "(quicklisp-quickstart:install)"
+if [ ! -d ~/quicklisp ]; then sbcl --load quicklisp.lisp --eval "(progn (quicklisp-quickstart:install)(quit))" ; fi
