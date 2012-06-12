@@ -45,7 +45,7 @@
   
   ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
   (define-key *root-map* (kbd "B") "show-battery-state") 
-  (define-key *root-map* (kbd "d") "exec google-chrome")
+  (define-key *root-map* (kbd "d") "exec chromium-browser")
   (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
   (define-key *root-map* (kbd "DEL") "quit")
   (define-key *root-map* (kbd "q") "suspend")
