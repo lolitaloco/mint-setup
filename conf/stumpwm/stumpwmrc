@@ -37,6 +37,10 @@
   (run-shell-command
    "sleep 1;xset dpms force off"))
 
+(defcommand chrome () ()
+  "Start Chrome unless it is already running, in which case focus it."
+  (run-or-raise "chromium-browser" '(:title " - Chromium")))
+
 (let ((home (sb-unix::posix-getenv "HOME")))
   
   ;; GNOME Integration
@@ -45,7 +49,7 @@
   
   ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
   (define-key *root-map* (kbd "B") "show-battery-state") 
-  (define-key *root-map* (kbd "d") "exec chromium-browser")
+  (define-key *root-map* (kbd "d") "chrome")
   (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
   (define-key *root-map* (kbd "DEL") "quit")
   (define-key *root-map* (kbd "q") "suspend")
