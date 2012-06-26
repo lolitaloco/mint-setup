@@ -21,7 +21,8 @@ else
 fi
 
 echo Setting up personal binary path
-if [ ! -d ~/bin ]; then mkdir ~/bin ; fi
+if [ ! -d ~/bin ];     then mkdir ~/bin                         ; fi
+if [ ! -f ~/bin/gsa ]; then ln -s $(pwd)/conf/bin/gsa ~/bin/gsa ; fi
 
 echo Getting WineTricks for future use
 if [ -f ~/bin/winetricks.sh ]; then rm -f ~/bin/winetricks.sh ; fi  

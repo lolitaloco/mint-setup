@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'tempfile'
+
+def paths_in_home
+  home = ENV['HOME']
+  Dir.entries(home).map { |entry| File.join(home, entry) }.select { |path| File.directory?(path) }
+end 
+
+def git_paths_in_home
+  paths_in_home.select { |path| Dir.exists?(File.join(path, '.git')) }
+end
+
+def with_tempfile
+  tempfile = Tempfile.new('gsr')
+  temppath = tempfile.path
+  begin
+    yield temppath
+  ensure
+    tempfile.unlink
+  end
+end
+
+git_paths_in_home.each do |dir|
+  with_tempfile do |temppath|
+    system("cd #{dir} && git status > #{temppath}")
+    system("if ! grep -q 'working directory clean' #{temppath} ; then echo ; echo #{dir} ; cat #{temppath} ; fi") 
+  end
+end
