@@ -23,8 +23,7 @@
 (defcommand suspend () ()
   "Suspends the system (to RAM)"
   (run-shell-command 
-   "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend" 
-   t))
+   "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")) 
 
 (defcommand show-battery-state () ()
   "Shows the state of the first battery"
