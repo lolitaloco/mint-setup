@@ -18,9 +18,6 @@ apt-get purge -y pulseaudio
 apt-get install -y stumpwm network-manager-gnome trayer cl-swank cl-clx-sbcl xloadimage alsa-utils
 cp -f $(pwd)/conf/stumpwm/stumpwm.desktop /usr/share/xsessions/stumpwm.desktop
 
-# Install Skype (should be in Mint repos)
-apt-get install -y skype
-
 # Install Coffeescript
 apt-get install -y curl nodejs
 curl http://npmjs.org/install.sh | sh
