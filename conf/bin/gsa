@@ -24,6 +24,11 @@ end
 git_paths_in_home.each do |dir|
   with_tempfile do |temppath|
     system("cd #{dir} && git status > #{temppath}")
-    system("if ! grep -q 'working directory clean' #{temppath} ; then echo ; echo #{dir} ; cat #{temppath} ; fi") 
+    status = File.read(temppath)
+    if status.include?('is ahead') or !status.include?('working directory clean')
+      puts
+      puts dir
+      puts status
+    end
   end
 end
