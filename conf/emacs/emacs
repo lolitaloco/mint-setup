@@ -168,3 +168,6 @@
 (custom-set-variables
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido)))
+
+;; don't keep asking to follow VCS links
+(setq vc-follow-symlinks t)
