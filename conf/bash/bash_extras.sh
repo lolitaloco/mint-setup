@@ -1,4 +1,5 @@
 export PATH=/var/lib/gems/1.8/bin:$HOME/personal/bin/:$HOME/bin:$PATH 
+export GIT_EDITOR=emacs
 
 alias gs='git status'
 alias be='bundle exec'
