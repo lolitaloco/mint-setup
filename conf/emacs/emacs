@@ -171,3 +171,8 @@
 
 ;; don't keep asking to follow VCS links
 (setq vc-follow-symlinks t)
+
+;; don't keep prompting about active processes on exit; see http://www.emacswiki.org/emacs/EmacsNiftyTricks
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
