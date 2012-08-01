@@ -7,5 +7,6 @@ alias gco='git checkout'
 alias ga='git add'
 alias gd='git diff --color'
 alias gl='git log'
+alias gc='git commit'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
