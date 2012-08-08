@@ -40,6 +40,10 @@
   "Start Chrome unless it is already running, in which case focus it."
   (run-or-raise "chromium-browser" '(:title " - Chromium")))
 
+(defcommand spotify () ()
+  "Start Spotify unless it is already running, in which case focus it."
+  (run-or-raise "spotify" '(:title "Spotify Premium")))
+
 (let ((home (sb-unix::posix-getenv "HOME")))
   
   ;; GNOME Integration
@@ -53,6 +57,7 @@
   (define-key *root-map* (kbd "DEL") "quit")
   (define-key *root-map* (kbd "q") "suspend")
   (define-key *root-map* (kbd "L") "screen-saver")
+  (define-key *root-map* (kbd "M-s") "spotify")
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
