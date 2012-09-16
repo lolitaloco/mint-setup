@@ -18,13 +18,14 @@ apt-get purge -y pulseaudio
 apt-get install -y stumpwm network-manager-gnome trayer cl-swank cl-clx-sbcl xloadimage alsa-utils
 cp -f $(pwd)/conf/stumpwm/stumpwm.desktop /usr/share/xsessions/stumpwm.desktop
 
-# Install Coffeescript
+# Install node.js development stack
 apt-get install -y curl nodejs
 curl http://npmjs.org/install.sh | sh
 npm install -g coffee-script
+apt-get install -y mongodb
 
 # Install miscellaneous stuff
-apt-get -y install emacs k3b ccrypt eclipse autoconf libusb-dev xclip pdftk gqview gimp gnome-rdp xtightvncviewer lyx latex2html lynx pwgen dosbox tofrodos gettext net-tools audacity lame php5-cli php5-curl gparted vice dia frotz inform wine curl xsane libxine1-ffmpeg git-core subversion shtool libxslt-dev libssl-dev libpq-dev inotify-tools libnotify-bin acidrip libsqlite3-dev libreadline-gplv2-dev openssh-server gitg nautilus chromium-browser libtool automake
+apt-get -y install emacs k3b ccrypt eclipse autoconf libusb-dev xclip pdftk gqview gimp gnome-rdp xtightvncviewer lyx latex2html lynx pwgen dosbox tofrodos gettext net-tools audacity lame php5-cli php5-curl gparted vice dia frotz inform wine curl xsane libxine1-ffmpeg git-core subversion shtool libxslt-dev libssl-dev libpq-dev inotify-tools libnotify-bin acidrip libsqlite3-dev libreadline-gplv2-dev openssh-server gitg nautilus chromium-browser libtool automake libav-tools
 
 # Configure VICE
 cp -R $(pwd)/conf/vice/* /usr/lib/vice -R
