@@ -7,7 +7,7 @@ apt-get upgrade -y
 
 # Downgrade to GCC 4.5
 apt-get -y purge gcc
-apt-get -y install gcc-4.5 g++-4.5 build-essential
+apt-get -y install gcc-4.5 g++-4.5 build-essential libc6-dev-i386 gcc-4.5-multilib
 if [ -e /usr/bin/gcc ]; then rm -f /usr/bin/gcc ; fi
 if [ -e /usr/bin/g++ ]; then rm -f /usr/bin/g++ ; fi
 ln /usr/bin/gcc-4.5 /usr/bin/gcc
