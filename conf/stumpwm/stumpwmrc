@@ -40,6 +40,10 @@
   "Start Chrome unless it is already running, in which case focus it."
   (run-or-raise "chromium-browser" '(:title " - Chromium")))
 
+(defcommand firefox () ()
+  "Start Firefox unless it is already running, in which case focus it."
+  (run-or-raise "firefox" '(:title " - Mozilla Firefox")))
+
 (defcommand terminal () ()
   "Start gnome-terminal unless it is already running, in which case focus it."
   (run-or-raise "gnome-terminal" '(:title "Terminal")))
@@ -62,6 +66,7 @@
   (define-key *root-map* (kbd "q") "suspend")
   (define-key *root-map* (kbd "L") "screen-saver")
   (define-key *root-map* (kbd "M-s") "spotify")
+  (define-key *root-map* (kbd "M-f") "firefox")
   (define-key *root-map* (kbd "c") "terminal")
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
