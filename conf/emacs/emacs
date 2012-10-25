@@ -37,7 +37,8 @@
    "~/.emacs.d/slime" 
    "~/.emacs.d/coffee-mode" 
    "~/.emacs.d/undo-tree"
-   "~/.emacs.d/emms"))
+   "~/.emacs.d/emms"
+   "~/.emacs.d/find-file-in-project"))
 
 ;; Emacs itself
 (setq auto-mode-alist (cons '("emacs$" . lisp-mode) auto-mode-alist))
@@ -179,3 +180,10 @@
 
 ;; make coffee-mode use two spaces for tabs
 (setq coffee-tab-width 2)
+
+;; find file in project, like Command-T in TextMate
+(require 'find-file-in-project)
+(global-set-key (kbd "C-x t") 'find-file-in-project)
+(mapc '(lambda (ext) (add-to-list 'ffip-patterns ext))
+      '("*.yml" "*.sass" "*.haml" "*.cs" "*.rake" "Rakefile" "*.txt"))
+
