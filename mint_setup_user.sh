@@ -3,8 +3,6 @@ set -e
 
 echo Linking custom config
 if [ ! -f ~/.xinitrc   ]; then ln -s $(pwd)/conf/x/xinitrc ~/.xinitrc           ; fi  
-if [ ! -f ~/.emacs     ]; then ln -s $(pwd)/conf/emacs/emacs ~/.emacs           ; fi
-if [ ! -d ~/.emacs.d   ]; then ln -s $(pwd)/conf/emacs/emacs.d ~/.emacs.d       ; fi
 if [ ! -f ~/.stumpwmrc ]; then ln -s $(pwd)/conf/stumpwm/stumpwmrc ~/.stumpwmrc ; fi  
 
 if grep -q "037b7c29-5804-43e2-8054-d1ebfb0f3293" ~/.bashrc ;
