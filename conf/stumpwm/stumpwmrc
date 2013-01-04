@@ -8,6 +8,10 @@
     (concatenate 'string "amixer set Master " set-to " | grep '\[*%\]'")
     t)))
 
+(defun read-energy (name)
+  (let ((energy-file (open (concatenate 'string "/sys/class/power_supply/BAT1/" name))))
+    (read energy-file)))
+
 (defcommand raise-volume () ()
   "Raise volume via amixer"
   (amixer-set-master "5+"))
@@ -27,9 +31,12 @@
 
 (defcommand show-battery-state () ()
   "Shows the state of the first battery"
-  (run-shell-command
-   "echo `grep --color=never 'design capacity:' /proc/acpi/battery/BAT?/info`, `grep --color=never 'remaining capacity:' /proc/acpi/battery/BAT?/state`"
-   t))
+  (let ((energy-now (read-energy "energy_now"))
+	(energy-full (read-energy "energy_full")))
+    (echo (concatenate 
+	   'string 
+	   (write-to-string (float (* (/ energy-now energy-full) 100)))
+	   "%"))))
 
 (defcommand screen-saver () ()
   "Turns off the screen until a key is pressed"
