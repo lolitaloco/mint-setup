@@ -41,3 +41,9 @@ if !(grep -q sbcl /etc/profile)
   then echo export LISP=sbcl >> /etc/profile
 fi
 
+echo
+echo Installing Spotify
+deb http://repository.spotify.com stable non-free
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
+apt-get update
+apt-get install spotify-client -y
