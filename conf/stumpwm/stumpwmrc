@@ -8,8 +8,18 @@
     (concatenate 'string "amixer set Master " set-to " | grep '\[*%\]'")
     t)))
 
+(defun find-pathname-recursive (pathname-list)
+  (let ((possible-pathname (car pathname-list)))
+    (if (probe-file possible-pathname)	
+	possible-pathname
+      (find-pathname-recursive (cdr pathname-list)))))
+
+(defun bat-pathname ()
+  (let ((possible-pathnames '("/sys/class/power_supply/BAT1" "/sys/class/power_supply/BAT0")))
+    (find-pathname-recursive possible-pathnames)))
+
 (defun read-energy (name)
-  (let ((energy-file (open (concatenate 'string "/sys/class/power_supply/BAT1/" name))))
+  (let ((energy-file (open (concatenate 'string (bat-pathname) "/" name))))
     (read energy-file)))
 
 (defcommand raise-volume () ()
