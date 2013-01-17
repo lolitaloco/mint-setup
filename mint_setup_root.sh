@@ -14,7 +14,7 @@ cp -f $(pwd)/conf/stumpwm/stumpwm.desktop /usr/share/xsessions/stumpwm.desktop
 
 echo
 echo Install miscellaneous stuff
-apt-get -y install emacs k3b ccrypt eclipse autoconf libusb-dev xclip pdftk gqview gimp gnome-rdp xtightvncviewer lyx latex2html lynx pwgen dosbox tofrodos gettext net-tools audacity lame php5-cli php5-curl gparted vice dia frotz inform wine curl xsane libxine1-ffmpeg git-core subversion shtool libxslt-dev libssl-dev libpq-dev inotify-tools libnotify-bin acidrip libsqlite3-dev libreadline-gplv2-dev openssh-server gitg nautilus chromium-browser libtool automake libav-tools postgresql
+apt-get -y install acidrip audacity autoconf automake build-essential ccrypt chromium-browser curl dia dosbox eclipse frotz gettext gimp git-core gitg gnome-rdp gparted gqview inform inotify-tools k3b lame latex2html libav-tools libgif-dev libgtk2.0-dev libjpeg-dev libncurses-dev libnotify-bin libpng-dev libpq-dev libreadline-gplv2-dev libsqlite3-dev libssl-dev libtiff-dev libtool libusb-dev libx11-dev libxine1-ffmpeg libxpm-dev libxslt-dev lynx lyx nautilus net-tools openssh-server pdftk php5-cli php5-curl postgresql pwgen shtool subversion texinfo tofrodos vice wine xclip xsane xtightvncviewer
 
 echo
 echo Configure VICE
@@ -47,3 +47,18 @@ echo deb http://repository.spotify.com stable non-free | tee -a /etc/apt/sources
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 apt-get update
 apt-get install spotify-client -y
+
+echo 
+echo Downloading and installing Emacs from source
+echo
+rm -rf /tmp/emacs
+mkdir /tmp/emacs
+cp $(pwd)/conf/emacs/emacs-24.2.tar.gz /tmp/emacs
+pushd /tmp/emacs
+tar -zxvf emacs-24.2.tar.gz
+cd emacs-24.2
+./configure
+make
+make install
+popd
+rm -rf /tmp/emacs
