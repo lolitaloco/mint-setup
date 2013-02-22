@@ -3,14 +3,14 @@
 
 (defun amixer-set-master (set-to)
   "Uses amixer to set Master, echoing that part of the response that includes the volume."
-  (message 
-   (run-shell-command 
+  (message
+   (run-shell-command
     (concatenate 'string "amixer set Master " set-to " | grep '\[*%\]'")
     t)))
 
 (defun find-pathname-recursive (pathname-list)
   (let ((possible-pathname (car pathname-list)))
-    (if (probe-file possible-pathname)	
+    (if (probe-file possible-pathname)
 	possible-pathname
       (find-pathname-recursive (cdr pathname-list)))))
 
@@ -36,15 +36,15 @@
 
 (defcommand suspend () ()
   "Suspends the system (to RAM)"
-  (run-shell-command 
-   "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")) 
+  (run-shell-command
+   "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend"))
 
 (defcommand show-battery-state () ()
   "Shows the state of the first battery"
   (let ((energy-now (read-energy "energy_now"))
 	(energy-full (read-energy "energy_full")))
-    (echo (concatenate 
-	   'string 
+    (echo (concatenate
+	   'string
 	   (write-to-string (float (* (/ energy-now energy-full) 100)))
 	   "%"))))
 
@@ -55,11 +55,11 @@
 
 (defcommand chrome () ()
   "Start Chrome unless it is already running, in which case focus it."
-  (run-or-raise "chromium-browser" '(:title " - Chromium")))
+  (run-or-raise "chromium-browser" '(:title "Chromium")))
 
 (defcommand firefox () ()
   "Start Firefox unless it is already running, in which case focus it."
-  (run-or-raise "firefox" '(:title " - Mozilla Firefox")))
+  (run-or-raise "firefox" '(:title "Mozilla Firefox")))
 
 (defcommand terminal () ()
   "Start gnome-terminal unless it is already running, in which case focus it."
@@ -74,13 +74,13 @@
   (run-or-raise "thunderbird" '(:title "Thunderbird")))
 
 (let ((home (sb-unix::posix-getenv "HOME")))
-  
+
   ;; GNOME Integration
   (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
   (run-shell-command "nm-applet --sm-disable")
-  
+
   ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
-  (define-key *root-map* (kbd "B") "show-battery-state") 
+  (define-key *root-map* (kbd "B") "show-battery-state")
   (define-key *root-map* (kbd "d") "chrome")
   (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
   (define-key *root-map* (kbd "DEL") "quit")
@@ -93,7 +93,7 @@
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
-  
+
   ;; startup stuff
   (run-shell-command (concatenate 'string "xsetbg -border black -center " home "/Pictures/stumpwm_wallpaper.jpg"))
   (run-shell-command "emacs")
