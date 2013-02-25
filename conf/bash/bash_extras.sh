@@ -11,5 +11,6 @@ alias gl='git log'
 alias gc='git commit'
 alias gss='git stash save'
 alias gsp='git stash pop'
+alias gpl='git pull --rebase'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
