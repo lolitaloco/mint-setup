@@ -23,6 +23,9 @@ echo
 echo Configure VICE
 cp -R $(pwd)/conf/vice/* /usr/lib/vice -R
 
+echo Build FFMPEG from source, as the Mint version is borked
+./build_ffmpeg.sh
+
 echo
 echo Build SBCL from source, so we are using a good version with threading enabled
 apt-get -y install clisp
