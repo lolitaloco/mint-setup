@@ -2,8 +2,8 @@
 set -e
 
 echo Linking custom config
-if [ ! -f ~/.xinitrc   ]; then ln -s $(pwd)/conf/x/xinitrc ~/.xinitrc           ; fi  
-if [ ! -f ~/.stumpwmrc ]; then ln -s $(pwd)/conf/stumpwm/stumpwmrc ~/.stumpwmrc ; fi  
+if [ ! -f ~/.xinitrc   ]; then ln -s $(pwd)/conf/x/xinitrc ~/.xinitrc           ; fi
+if [ ! -f ~/.stumpwmrc ]; then ln -s $(pwd)/conf/stumpwm/stumpwmrc ~/.stumpwmrc ; fi
 
 if grep -q "037b7c29-5804-43e2-8054-d1ebfb0f3293" ~/.bashrc ;
 then
@@ -19,11 +19,13 @@ else
 fi
 
 echo Setting up personal binary path
-if [ ! -d ~/bin ];     then mkdir ~/bin                         ; fi
-if [ ! -f ~/bin/gsa ]; then ln -s $(pwd)/conf/bin/gsa ~/bin/gsa ; fi
+if [ ! -d ~/bin ];            then mkdir ~/bin                                       ; fi
+if [ ! -f ~/bin/gsa ];        then ln -s $(pwd)/conf/bin/gsa ~/bin/gsa               ; fi
+if [ ! -f ~/bin/lock_dvd ];   then ln -s $(pwd)/conf/bin/lock_dvd ~/bin/lock_dvd     ; fi
+if [ ! -f ~/bin/unlock_dvd ]; then ln -s $(pwd)/conf/bin/unlock_dvd ~/bin/unlock_dvd ; fi
 
 echo Getting WineTricks for future use
-if [ -f ~/bin/winetricks.sh ]; then rm -f ~/bin/winetricks.sh ; fi  
+if [ -f ~/bin/winetricks.sh ]; then rm -f ~/bin/winetricks.sh ; fi
 wget http://www.kegel.com/wine/winetricks
 mv $(pwd)/winetricks ~/bin/winetricks.sh
 chmod a+x ~/bin/winetricks.sh

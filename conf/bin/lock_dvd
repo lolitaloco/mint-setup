@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/eject -i 1 /dev/sr0
