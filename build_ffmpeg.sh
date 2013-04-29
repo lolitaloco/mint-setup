@@ -2,6 +2,7 @@
 
 set -e
 
+rm -rf ~/tmp/ffmpeg
 mkdir -p ~/tmp/ffmpeg
 pushd ~/tmp/ffmpeg
 
