@@ -17,7 +17,7 @@ apt-get -y install libreadline6-dev libyaml-dev sqlite3 libgdbm-dev bison libffi
 
 echo
 echo Install miscellaneous stuff
-apt-get -y install acidrip audacity autoconf automake build-essential ccrypt chromium-browser curl dia dosbox eclipse frotz gettext gimp git-core gitg gnome-rdp gparted gqview inform inotify-tools k3b lame latex2html libav-tools libgif-dev libgtk2.0-dev libjpeg-dev libncurses-dev libnotify-bin libpng-dev libpq-dev libreadline-gplv2-dev libsqlite3-dev libssl-dev libtiff-dev libtool libusb-dev libx11-dev libxine1-ffmpeg libxpm-dev libxslt-dev lynx lyx markdown nautilus net-tools openssh-server pdftk php5-cli php5-curl postgresql pwgen shtool subversion texinfo tofrodos vice wine xclip xsane xtightvncviewer
+apt-get -y install acidrip audacity autoconf automake build-essential ccrypt checkinstall chromium-browser curl dia dosbox eclipse frotz gettext gimp git-core gitg gnome-rdp gparted gqview inform inotify-tools k3b lame latex2html libav-tools libgif-dev libgtk2.0-dev libjpeg-dev libncurses-dev libnotify-bin libpng-dev libpq-dev libreadline-gplv2-dev libsqlite3-dev libssl-dev libtiff-dev libtool libusb-dev libx11-dev libxine1-ffmpeg libxpm-dev libxslt-dev lynx lyx markdown nautilus net-tools openssh-server pdftk php5-cli php5-curl postgresql pwgen shtool subversion texinfo tofrodos vice wine xclip xsane xtightvncviewer
 
 echo
 echo Configure VICE
