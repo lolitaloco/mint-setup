@@ -33,7 +33,6 @@ sudo checkinstall --pkgname=lame-ffmpeg --pkgversion="3.99.5" --backup=no --defa
     --deldoc=yes
 popd
 
-cd
 git clone --depth 1 http://git.chromium.org/webm/libvpx.git
 pushd libvpx
 ./configure
