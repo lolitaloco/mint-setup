@@ -45,3 +45,6 @@ gconftool-2 -s -t bool /desktop/gnome/background/draw_background false
 echo Installing QuickLisp
 curl -O http://beta.quicklisp.org/quicklisp.lisp
 if [ ! -d ~/quicklisp ]; then sbcl --load quicklisp.lisp --eval "(progn (quicklisp-quickstart:install)(quit))" ; fi
+
+echo Configuring RSense
+ruby /opt/rsense-0.3/etc/config.rb > ~/.rsense

@@ -23,6 +23,7 @@ echo
 echo Configure VICE
 cp -R $(pwd)/conf/vice/* /usr/lib/vice -R
 
+echo
 echo Build FFMPEG from source, as the Mint version is borked
 ./build_ffmpeg.sh
 
@@ -68,3 +69,7 @@ make
 make install
 popd
 rm -rf /tmp/emacs
+
+echo
+echo Downloading and installing RSense
+./install_rsense.sh

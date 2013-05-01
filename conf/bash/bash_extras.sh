@@ -1,5 +1,6 @@
 export PATH=/var/lib/gems/1.8/bin:$HOME/personal/bin/:$HOME/bin:$PATH
 export GIT_EDITOR=emacs
+export RSENSE_HOME=/opt/rsense-0.3/
 
 alias gs='git status'
 alias be='bundle exec'
