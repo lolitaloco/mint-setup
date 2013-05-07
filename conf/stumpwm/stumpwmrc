@@ -69,6 +69,10 @@
   "Start Thunderbird unless it is already running, in which case focus it."
   (run-or-raise "thunderbird" '(:title "Thunderbird")))
 
+(defcommand lock-screen () ()
+  "Locks the screen."
+  (run-shell-command "xlock"))
+
 (let ((home (sb-unix::posix-getenv "HOME")))
 
   ;; GNOME Integration
@@ -85,6 +89,7 @@
   (define-key *root-map* (kbd "d") "firefox")
   (define-key *root-map* (kbd "c") "terminal")
   (define-key *root-map* (kbd "T") "thunderbird")
+  (define-key *root-map* (kbd "L") "lock-screen")
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
