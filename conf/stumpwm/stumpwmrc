@@ -99,4 +99,4 @@
   (run-shell-command "emacs")
 
   ;; swap CAPS and CTRL
-  (run-shell-command "setxkbmap -option ctrl:swapcaps"))
+  (run-shell-command "setxkbmap -option ctrl:swapcaps -option altwin:swap_lalt_lwin"))

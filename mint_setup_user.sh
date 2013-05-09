@@ -19,10 +19,11 @@ else
 fi
 
 echo Setting up personal binary path
-if [ ! -d ~/bin ];            then mkdir ~/bin                                       ; fi
-if [ ! -f ~/bin/gsa ];        then ln -s $(pwd)/conf/bin/gsa ~/bin/gsa               ; fi
-if [ ! -f ~/bin/lock_dvd ];   then ln -s $(pwd)/conf/bin/lock_dvd ~/bin/lock_dvd     ; fi
-if [ ! -f ~/bin/unlock_dvd ]; then ln -s $(pwd)/conf/bin/unlock_dvd ~/bin/unlock_dvd ; fi
+if [ ! -d ~/bin ];             then mkdir ~/bin                                                         ; fi
+if [ ! -f ~/bin/gsa ];         then ln -s $(pwd)/conf/bin/gsa ~/bin/gsa                                 ; fi
+if [ ! -f ~/bin/lock_dvd ];    then ln -s $(pwd)/conf/bin/lock_dvd ~/bin/lock_dvd                       ; fi
+if [ ! -f ~/bin/unlock_dvd ];  then ln -s $(pwd)/conf/bin/unlock_dvd ~/bin/unlock_dvd                   ; fi
+if [ ! -f ~/bin/markdownify ]; then ln -s $(pwd)/conf/markdownify/markdownify_cli.php ~/bin/markdownify ; fi
 
 echo Getting WineTricks for future use
 if [ -f ~/bin/winetricks.sh ]; then rm -f ~/bin/winetricks.sh ; fi
