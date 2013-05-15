@@ -49,3 +49,7 @@ if [ ! -d ~/quicklisp ]; then sbcl --load quicklisp.lisp --eval "(progn (quickli
 
 echo Configuring RSense
 ruby /opt/rsense-0.3/etc/config.rb > ~/.rsense
+
+echo Linking Gnome configuration into repo
+rm -rf ~/.gconf
+ln -s $(pwd)/conf/gconf ~/.gconf
