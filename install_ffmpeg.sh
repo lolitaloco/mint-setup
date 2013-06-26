@@ -2,6 +2,9 @@
 
 set -e
 
+echo
+echo Build FFMPEG from source, as the Mint version is borked
+
 rm -rf ~/tmp/ffmpeg
 mkdir -p ~/tmp/ffmpeg
 pushd ~/tmp/ffmpeg

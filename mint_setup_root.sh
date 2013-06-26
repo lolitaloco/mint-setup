@@ -23,23 +23,8 @@ echo
 echo Configure VICE
 cp -R $(pwd)/conf/vice/* /usr/lib/vice -R
 
-echo
-echo Build FFMPEG from source, as the Mint version is borked
-./build_ffmpeg.sh
-
-echo
-echo Build SBCL from source, so we are using a good version with threading enabled
-apt-get -y install clisp
-rm -rf /tmp/sbcl
-mkdir /tmp/sbcl
-cp $(pwd)/src/sbcl-1.0.54-source.tar.gz /tmp/sbcl
-pushd /tmp/sbcl
-tar -zxvf sbcl-1.0.54-source.tar.gz
-cd sbcl-1.0.54
-sh make.sh clisp
-INSTALL_ROOT=/usr/local sh install.sh
-popd
-rm -rf /tmp/sbcl
+./install_ffmpeg.sh
+./install_sbcl.sh
 
 echo
 echo Make StumpWM use SBCL, not CLISP
@@ -48,28 +33,6 @@ if !(grep -q sbcl /etc/profile)
   then echo export LISP=sbcl >> /etc/profile
 fi
 
-echo
-echo Installing Spotify
-echo deb http://repository.spotify.com stable non-free | tee -a /etc/apt/sources.list
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-apt-get update
-apt-get install spotify-client -y
-
-echo
-echo Downloading and installing Emacs from source
-echo
-rm -rf /tmp/emacs
-mkdir /tmp/emacs
-cp $(pwd)/conf/emacs/emacs-24.2.tar.gz /tmp/emacs
-pushd /tmp/emacs
-tar -zxvf emacs-24.2.tar.gz
-cd emacs-24.2
-./configure
-make
-make install
-popd
-rm -rf /tmp/emacs
-
-echo
-echo Downloading and installing RSense
+./install_spotify.sh
+./install_emacs.sh
 ./install_rsense.sh

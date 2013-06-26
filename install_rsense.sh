@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+echo
+echo Downloading and installing RSense
+
 mkdir -p ~/tmp/rsense
 pushd ~/tmp/rsense
 
