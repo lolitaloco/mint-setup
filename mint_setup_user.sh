@@ -10,13 +10,26 @@ if grep -q "037b7c29-5804-43e2-8054-d1ebfb0f3293" ~/.bashrc ;
 then
     echo Bash confugration extras already added to ~/.bashrc.
 else
-    echo Adding custom Bash setup
+    echo Adding custom Bash setup to ~/.bashrc
     if [ ! -d ~/bin ]; then mkdir ~/bin ; fi
     echo >> ~/.bashrc
     echo \# Personal Bash configuration extras, added by ubuntu_setup.sh >> ~/.bashrc
     echo \# 037b7c29-5804-43e2-8054-d1ebfb0f3293 >> ~/.bashrc
     echo . $(pwd)/conf/bash/bash_extras.sh >> ~/.bashrc
     echo >> ~/.bashrc
+fi
+
+if grep -q "48ff9575-b263-4dc8-9912-6e5669dd1448" ~/.bashrc ;
+then
+    echo Bash confugration extras already added to ~/.bashrc.
+else
+    echo Adding custom Bash setup to ~/.bash_profile
+    if [ ! -d ~/bin ]; then mkdir ~/bin ; fi
+    echo >> ~/.bashrc
+    echo \# Personal Bash configuration extras, added by ubuntu_setup.sh >> ~/.bash_profile
+    echo \# 48ff9575-b263-4dc8-9912-6e5669dd1448 >> ~/.bash_profile
+    echo . $(pwd)/conf/bash/bash_extras.sh >> ~/.bash_profile
+    echo >> ~/.bash_profile
 fi
 
 echo Setting up personal binary path
