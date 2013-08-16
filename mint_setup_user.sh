@@ -4,6 +4,7 @@ set -e
 echo Linking custom config
 if [ ! -f ~/.xinitrc   ]; then ln -s $(pwd)/conf/x/xinitrc ~/.xinitrc           ; fi
 if [ ! -f ~/.stumpwmrc ]; then ln -s $(pwd)/conf/stumpwm/stumpwmrc ~/.stumpwmrc ; fi
+if [ ! -f ~/.tmux.conf ]; then ln -s $(pwd)/conf/tmux/tmux.conf ~/.tmux.conf    ; fi
 
 if grep -q "037b7c29-5804-43e2-8054-d1ebfb0f3293" ~/.bashrc ;
 then
