@@ -59,7 +59,7 @@
 
 (defcommand terminal () ()
   "Start gnome-terminal unless it is already running, in which case focus it."
-  (run-or-raise "gnome-terminal" '(:title "Terminal")))
+  (run-or-raise "gnome-terminal -e tmux" '(:title "Terminal")))
 
 (defcommand spotify () ()
   "Start Spotify unless it is already running, in which case focus it."
@@ -104,4 +104,4 @@
   (run-shell-command "gnome-terminal -e tmux")
 
   ;; swap CAPS and CTRL
-  (run-shell-command "setxkbmap -option ctrl:swapcaps"))
+  (run-shell-command "setxkbmap -option ctrl:swapcaps -option altwin:swap_lalt_lwin"))
