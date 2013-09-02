@@ -45,13 +45,8 @@ wget http://www.kegel.com/wine/winetricks
 mv $(pwd)/winetricks ~/bin/winetricks.sh
 chmod a+x ~/bin/winetricks.sh
 
-echo Setting up RVM
-bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-rvm remove 1.9.3
-rvm install 1.9.3 -C --with-openssl-dir=$HOME/.rvm/usr
-rvm --default use 1.9.3
-gem install bundler
+echo Setting up rbenv
+./install_rbenv.sh
 
 echo Configuring Gnome to be less intrusive
 gconftool-2 -s -t bool /apps/nautilus/preferences/show_desktop false
