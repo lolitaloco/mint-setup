@@ -15,4 +15,5 @@ alias gss='git stash save'
 alias gsp='git stash pop'
 alias gpl='git pull --rebase'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

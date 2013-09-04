@@ -19,9 +19,9 @@ else
     echo >> ~/.bashrc
 fi
 
-if grep -q "48ff9575-b263-4dc8-9912-6e5669dd1448" ~/.bashrc ;
+if grep -q "48ff9575-b263-4dc8-9912-6e5669dd1448" ~/.bash_profile ;
 then
-    echo Bash confugration extras already added to ~/.bashrc.
+    echo Bash confugration extras already added to ~/.bash_profile.
 else
     echo Adding custom Bash setup to ~/.bash_profile
     if [ ! -d ~/bin ]; then mkdir ~/bin ; fi
