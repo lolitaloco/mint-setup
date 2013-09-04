@@ -59,7 +59,7 @@
 
 (defcommand terminal () ()
   "Start gnome-terminal unless it is already running, in which case focus it."
-  (run-or-raise "gnome-terminal -e tmux" '(:title "Terminal")))
+  (run-or-raise "gnome-terminal" '(:title "Terminal")))
 
 (defcommand spotify () ()
   "Start Spotify unless it is already running, in which case focus it."
