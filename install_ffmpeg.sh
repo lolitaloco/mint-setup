@@ -5,6 +5,8 @@ set -e
 echo
 echo Build FFMPEG from source, as the Mint version is borked
 
+apt-get install -y libopencore-amrwb-dev
+
 rm -rf ~/tmp/ffmpeg
 mkdir -p ~/tmp/ffmpeg
 pushd ~/tmp/ffmpeg
@@ -57,3 +59,4 @@ popd
 
 popd
 rm -rf ~/tmp/ffmpeg
+
