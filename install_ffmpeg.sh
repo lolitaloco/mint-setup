@@ -19,7 +19,8 @@ popd
 
 git clone --depth 1 git://git.videolan.org/x264
 pushd x264
-./configure --enable-static
+./configure --prefix="$HOME/ffmpeg_build" --bindir="$HOME/bin" \
+--enable-static --disable-opencl 
 make
 sudo checkinstall --pkgname=x264 --default --pkgversion="3:$(./version.sh | \
     awk -F'[" ]' '/POINT/{print $4"+git"$5}')" --backup=no --deldoc=yes
