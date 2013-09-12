@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+mkdir ~/mint_setup_tmp
+
 echo
 echo Update and upgrade from all repositories
 apt-get update -y
@@ -37,3 +39,5 @@ fi
 ./install_rsense.sh
 ./install_nixnote.sh
 ./install_anki.sh
+
+rm -rf ~/mint_setup_tmp
