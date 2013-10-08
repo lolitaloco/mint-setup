@@ -13,6 +13,7 @@ alias gl='git log'
 alias gc='git commit'
 alias gss='git stash save'
 alias gsp='git stash pop'
+alias gps='git push'
 alias gpl='git pull --rebase'
 
 export PATH="$HOME/.rbenv/bin:$PATH"
