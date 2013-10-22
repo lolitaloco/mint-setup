@@ -33,11 +33,16 @@ else
 fi
 
 echo Setting up personal binary path
-if [ ! -d ~/bin ];             then mkdir ~/bin                                                         ; fi
-if [ ! -f ~/bin/gsa ];         then ln -s $(pwd)/conf/bin/gsa ~/bin/gsa                                 ; fi
-if [ ! -f ~/bin/lock_dvd ];    then ln -s $(pwd)/conf/bin/lock_dvd ~/bin/lock_dvd                       ; fi
-if [ ! -f ~/bin/unlock_dvd ];  then ln -s $(pwd)/conf/bin/unlock_dvd ~/bin/unlock_dvd                   ; fi
-if [ ! -f ~/bin/markdownify ]; then ln -s $(pwd)/conf/markdownify/markdownify_cli.php ~/bin/markdownify ; fi
+if [ ! -d ~/bin              ]; then mkdir ~/bin                                                              ; fi
+if [ ! -f ~/bin/dp1          ]; then ln -s $(pwd)/conf/bin/dp1                             ~/bin/dp1          ; fi
+if [ ! -f ~/bin/gsa          ]; then ln -s $(pwd)/conf/bin/gsa                             ~/bin/gsa          ; fi
+if [ ! -f ~/bin/hdmi1        ]; then ln -s $(pwd)/conf/bin/hdmi1                           ~/bin/hdmi1	      ; fi
+if [ ! -f ~/bin/lock_dvd     ]; then ln -s $(pwd)/conf/bin/lock_dvd                        ~/bin/lock_dvd     ; fi
+if [ ! -f ~/bin/lvds1        ]; then ln -s $(pwd)/conf/bin/lvds1                           ~/bin/lvds1        ; fi
+if [ ! -f ~/bin/markdownify  ]; then ln -s $(pwd)/conf/bin/markdownify/markdownify_cli.php ~/bin/markdownify  ; fi
+if [ ! -f ~/bin/swapcaps_mac ]; then ln -s $(pwd)/conf/bin/swapcaps_mac                    ~/bin/swapcaps_mac ; fi
+if [ ! -f ~/bin/swapcaps     ]; then ln -s $(pwd)/conf/bin/swapcaps                        ~/bin/swapcaps     ; fi
+if [ ! -f ~/bin/unlock_dvd   ]; then ln -s $(pwd)/conf/bin/unlock_dvd                      ~/bin/unlock_dvd   ; fi
 
 echo Getting WineTricks for future use
 if [ -f ~/bin/winetricks.sh ]; then rm -f ~/bin/winetricks.sh ; fi
