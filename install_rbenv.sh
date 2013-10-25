@@ -2,6 +2,9 @@
 
 set -e
 
+echo Install Ruby dependencies
+sudo apt-get -y install libreadline6-dev libyaml-dev sqlite3 libgdbm-dev bison libffi-dev
+
 pushd ~
 rm -rf ~/.rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
