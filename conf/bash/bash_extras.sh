@@ -4,6 +4,7 @@ export BUNDLER_EDITOR=emacs
 export RSENSE_HOME=/opt/rsense-0.3/
 
 alias be='bundle exec'
+alias bec='bundle exec cucumber'
 alias ber='bundle exec rake'
 alias ga='git add'
 alias gc='git commit'
