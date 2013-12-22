@@ -66,8 +66,7 @@
 
 (defpackage #:qlqs-minitar
   (:use #:cl)
-  (:export #:tarball-contents
-           #:unpack-tarball))
+  (:export #:unpack-tarball))
 
 (defpackage #:quicklisp-quickstart
   (:use #:cl #:qlqs-impl #:qlqs-impl-util #:qlqs-http #:qlqs-minitar)
@@ -407,6 +406,7 @@
   (:implementation lispworks
     (qlqs-lispworks:open-tcp-stream host port
                                    :direction :io
+                                   :errorp t
                                    :read-timeout nil
                                    :element-type '(unsigned-byte 8)
                                    :timeout 5))
@@ -968,7 +968,7 @@
                                   (format nil ":~D" port)))
       (add-line "Connection: close")
       ;; FIXME: get this version string from somewhere else.
-      (add-line "User-Agent: quicklisp-bootstrap/2013082800")
+      (add-line "User-Agent: quicklisp-bootstrap/2013121600")
       (add-newline sink)
       (sink-buffer sink))))
 
@@ -1588,12 +1588,15 @@ the indexes in the header accordingly."
     (let ((name (pathname-name *home*)))
       (warn "Making ~A part of the install pathname directory"
             name)
-      ;; This corrects a pathname like "/foo/bar" to "/foo/bar/"
+      ;; This corrects a pathname like "/foo/bar" to "/foo/bar/" and
+      ;; "foo" to "foo/"
       (setf *home*
             (make-pathname :defaults *home*
-                           :directory (append (pathname-directory *home*)
-                                              (list name))))))
-  (setf *home* (merge-pathnames *home*))
+                           :directory (append
+                                       (or (pathname-directory *home*)
+                                           (list :relative))
+                                       (list name))))))
+  (setf *home* (merge-pathnames *home* (truename *default-pathname-defaults*)))
   (let ((setup-file (qmerge "setup.lisp")))
     (when (probe-file setup-file)
       (multiple-value-bind (result proceed)
@@ -1609,11 +1612,6 @@ the indexes in the header accordingly."
         (write-string *after-initial-setup-message*)
         t)
       (call-with-quiet-compilation #'initial-install)))
-
-;;; Try to canonicalize to an absolute pathname; helps on Lisps where
-;;; *default-pathname-defaults* isn't an absolute pathname at startup
-;;; (e.g. CCL, CMUCL)
-(setf *default-pathname-defaults* (truename *default-pathname-defaults*))
 
 (write-string *after-load-message*)
 
