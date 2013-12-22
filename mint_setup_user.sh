@@ -34,6 +34,7 @@ fi
 
 echo Setting up personal binary path
 if [ ! -d ~/bin              ]; then mkdir ~/bin                                                              ; fi
+if [ ! -f ~/bin/both         ]; then ln -s $(pwd)/conf/bin/both                            ~/bin/both         ; fi
 if [ ! -f ~/bin/dp1          ]; then ln -s $(pwd)/conf/bin/dp1                             ~/bin/dp1          ; fi
 if [ ! -f ~/bin/gsa          ]; then ln -s $(pwd)/conf/bin/gsa                             ~/bin/gsa          ; fi
 if [ ! -f ~/bin/hdmi1        ]; then ln -s $(pwd)/conf/bin/hdmi1                           ~/bin/hdmi1	      ; fi
