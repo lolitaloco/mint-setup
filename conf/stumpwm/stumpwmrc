@@ -11,15 +11,25 @@
 (defun find-pathname-recursive (pathname-list)
   (let ((possible-pathname (car pathname-list)))
     (if (probe-file possible-pathname)
-	possible-pathname
+        possible-pathname
       (find-pathname-recursive (cdr pathname-list)))))
 
 (defun bat-pathname ()
   (let ((possible-pathnames '("/sys/class/power_supply/BAT1" "/sys/class/power_supply/BAT0")))
     (find-pathname-recursive possible-pathnames)))
 
+(defun now-pathname ()
+  (let ((possible-pathnames `(,(concatenate 'string (bat-pathname) "/" "energy_now")
+                              ,(concatenate 'string (bat-pathname) "/" "charge_now"))))
+    (find-pathname-recursive possible-pathnames)))
+
+(defun full-pathname ()
+  (let ((possible-pathnames `(,(concatenate 'string (bat-pathname) "/" "energy_full")
+                              ,(concatenate 'string (bat-pathname) "/" "charge_full"))))
+    (find-pathname-recursive possible-pathnames)))
+
 (defun read-energy (name)
-  (let ((energy-file (open (concatenate 'string (bat-pathname) "/" name))))
+  (let ((energy-file (open name)))
     (read energy-file)))
 
 (defcommand raise-volume () ()
@@ -41,12 +51,12 @@
 
 (defcommand show-battery-state () ()
   "Shows the state of the first battery"
-  (let ((energy-now (read-energy "energy_now"))
-	(energy-full (read-energy "energy_full")))
+  (let ((energy-now (read-energy (now-pathname)))
+        (energy-full (read-energy (full-pathname))))
     (echo (concatenate
-	   'string
-	   (write-to-string (float (* (/ energy-now energy-full) 100)))
-	   "%"))))
+           'string
+           (write-to-string (float (* (/ energy-now energy-full) 100)))
+           "%"))))
 
 (defcommand screen-saver () ()
   "Turns off the screen until a key is pressed"
