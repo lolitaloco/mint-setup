@@ -68,8 +68,8 @@
   (run-or-raise "firefox" '(:title "Mozilla Firefox")))
 
 (defcommand terminal () ()
-  "Start gnome-terminal unless it is already running, in which case focus it."
-  (run-or-raise "gnome-terminal" '(:title "Terminal")))
+  "Start terminator unless it is already running, in which case focus it."
+  (run-or-raise "terminator" '(:instance "terminator")))
 
 (defcommand spotify () ()
   "Start Spotify unless it is already running, in which case focus it."
