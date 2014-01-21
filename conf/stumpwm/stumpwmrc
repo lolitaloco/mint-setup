@@ -73,6 +73,10 @@
   (run-shell-command
    "xscreensaver-command -lock"))
 
+(defcommand nemo () ()
+  "Start Nemo unless it is already running, in which case focus it."
+  (run-or-raise "nemo --no-desktop" '(:class "Nemo")))
+
 (defcommand firefox () ()
   "Start Firefox unless it is already running, in which case focus it."
   (run-or-raise "firefox" '(:class "Firefox")))
@@ -105,7 +109,7 @@
 
   ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
   (define-key *root-map* (kbd "B") "show-battery-state")
-  (define-key *root-map* (kbd "x") "exec nautilus --no-desktop")
+  (define-key *root-map* (kbd "x") "nemo")
   (define-key *root-map* (kbd "DEL") "quit")
   (define-key *root-map* (kbd "q") "suspend")
   (define-key *root-map* (kbd "L") "screen-saver")
