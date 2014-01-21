@@ -67,6 +67,10 @@
   "Start Firefox unless it is already running, in which case focus it."
   (run-or-raise "firefox" '(:class "Firefox")))
 
+(defcommand chromium () ()
+  "Start Chromium unless it is already running, in which case focus it."
+  (run-or-raise "chromium-browser" '(:class "Chromium-browser")))
+
 (defcommand terminal () ()
   "Start terminator unless it is already running, in which case focus it."
   (run-or-raise "terminator" '(:class "Terminator")))
@@ -102,6 +106,7 @@
   (define-key *root-map* (kbd "L") "screen-saver")
   (define-key *root-map* (kbd "M-s") "spotify")
   (define-key *root-map* (kbd "d") "firefox")
+  (define-key *root-map* (kbd "D") "chromium")
   (define-key *root-map* (kbd "c") "terminal")
   (define-key *root-map* (kbd "T") "thunderbird")
   (define-key *root-map* (kbd "L") "lock-screen")
