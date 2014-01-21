@@ -87,10 +87,6 @@
   "Locks the screen."
   (run-shell-command "xlock"))
 
-(defcommand drracket () ()
-  "Start drracket unless it is already running, in which case focus it."
-  (run-or-raise "drracket" '(:title "DrRacket")))
-
 (let ((home (sb-unix::posix-getenv "HOME")))
 
   ;; GNOME Integration
@@ -104,7 +100,6 @@
   (define-key *root-map* (kbd "q") "suspend")
   (define-key *root-map* (kbd "L") "screen-saver")
   (define-key *root-map* (kbd "M-s") "spotify")
-  (define-key *root-map* (kbd "M-r") "drracket")
   (define-key *root-map* (kbd "d") "firefox")
   (define-key *root-map* (kbd "c") "terminal")
   (define-key *root-map* (kbd "T") "thunderbird")
