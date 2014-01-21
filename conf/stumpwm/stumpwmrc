@@ -1,6 +1,16 @@
 ;; Hey, Emacs! This is a -*- lisp -*- file!
 (in-package :stumpwm)
 
+(defun x-setup-once ()
+  (defvar *x-setup-initialized*)
+  (if (boundp '*initialized*)
+      (message "Already initialized, so skipping X setup.")
+    (progn
+      (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
+      (run-shell-command "nm-applet --sm-disable")
+      (run-shell-command "xscreensaver &")
+      (setq *x-setup-initialized* t))))
+
 (defun amixer-set-master (set-to)
   "Uses amixer to set Master, echoing that part of the response that includes the volume."
   (message
@@ -90,10 +100,8 @@
 
 (let ((home (sb-unix::posix-getenv "HOME")))
 
-  ;; GNOME Integration
-  (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
-  (run-shell-command "nm-applet --sm-disable")
-  (run-shell-command "xscreensaver &")
+  ;; X setup
+  (x-setup-once)
 
   ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
   (define-key *root-map* (kbd "B") "show-battery-state")
@@ -111,7 +119,7 @@
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
 
-  ;; startup stuff
+  ;; startup stuff - safe to do this multiple times
   (run-shell-command (concatenate 'string "xsetbg -border black -center " home "/Pictures/stumpwm_wallpaper.jpg"))
   (run-shell-command "emacs")
 
