@@ -116,3 +116,5 @@
 
   ;; swap CAPS and CTRL
   (run-shell-command "setxkbmap -option ctrl:swapcaps"))
+
+(setq *window-format* "%n%s%80t [%20c]")
