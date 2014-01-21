@@ -65,20 +65,21 @@
 
 (defcommand firefox () ()
   "Start Firefox unless it is already running, in which case focus it."
-  (run-or-raise "firefox" '(:title "Mozilla Firefox")))
+  (run-or-raise "firefox" '(:class "Firefox")))
 
 (defcommand terminal () ()
   "Start terminator unless it is already running, in which case focus it."
-  (run-or-raise "terminator" '(:instance "terminator")))
+  (run-or-raise "terminator" '(:class "Terminator")))
 
 (defcommand spotify () ()
   "Start Spotify unless it is already running, in which case focus it."
-  (run-or-raise "spotify" '(:title "Spotify Premium")))
+  (run-or-raise "spotify" '(:class "Spotify")))
 
 (defcommand thunderbird () ()
   "Start Thunderbird unless it is already running, in which case focus it."
-  (run-or-raise "thunderbird" '(:title "Thunderbird")))
+  (run-or-raise "thunderbird" '(:class "Thunderbird")))
 
+;; can't use :class here as NixNote doesn't set a sensible one
 (defcommand nixnote () ()
   "Start Nixnote unless it is already running, in which case focus it."
   (run-or-raise "nixnote" '(:title "NixNote")))
