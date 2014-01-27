@@ -17,6 +17,12 @@ echo
 echo Configure VICE
 cp -R $(pwd)/conf/vice/* /usr/lib/vice -R
 
+echo
+echo Configuring swapcaps on resume
+rm -f /etc/pm/sleep.d/swapcaps
+ln -s $(pwd)/conf/bin/swapcaps /etc/pm/sleep.d/swapcaps
+chmod a+x /etc/pm/sleep.d/swapcaps
+
 ./install_sbcl.sh
 ./install_stumpwm.sh
 ./install_spotify.sh
