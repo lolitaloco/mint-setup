@@ -29,6 +29,5 @@ chmod a+x /etc/pm/sleep.d/swapcaps
 ./install_emacs.sh
 ./install_rsense.sh
 ./install_nixnote.sh
-./install_anki.sh
 
 rm -rf ~/mint_setup_tmp
