@@ -26,6 +26,7 @@ chmod a+x /etc/pm/sleep.d/swapcaps
 ./install_sbcl.sh
 ./install_stumpwm.sh
 ./install_spotify.sh
+./install_sublime.sh
 ./install_emacs.sh
 ./install_rsense.sh
 ./install_nixnote.sh
