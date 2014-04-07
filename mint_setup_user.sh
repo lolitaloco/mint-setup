@@ -65,3 +65,6 @@ if [ ! -d ~/quicklisp ]; then sbcl --load quicklisp.lisp --eval "(progn (quickli
 
 echo Configuring RSense
 ruby /opt/rsense-0.3/etc/config.rb > ~/.rsense
+
+echo Configuring Sublime
+if [ ! -d ~/.config/sublime-text-3 ]; then ln -s $(pwd)/conf/sublime-text-3 ~/.config/sublime-text-3; fi

@@ -1,1 +1,5 @@
 npm-install-*.sh
+conf/sublime-text-3/Cache/*
+conf/sublime-text-3/Index/*
+conf/sublime-text-3/Local/*
+
