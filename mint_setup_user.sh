@@ -64,6 +64,8 @@ curl -O http://beta.quicklisp.org/quicklisp.lisp
 if [ ! -d ~/quicklisp ]; then sbcl --load quicklisp.lisp --eval "(progn (quicklisp-quickstart:install)(quit))" ; fi
 
 echo Configuring RSense
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 ruby /opt/rsense-0.3/etc/config.rb > ~/.rsense
 
 echo Configuring Sublime
