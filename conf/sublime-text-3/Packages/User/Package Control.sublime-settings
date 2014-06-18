@@ -1,9 +1,9 @@
 {
 	"installed_packages":
 	[
-		"Better CoffeeScript",
 		"CoffeeScriptHaml",
 		"Cucumber",
+		"IcedCoffeeScript",
 		"Origami",
 		"SCSS",
 		"SyncedSideBar"
