@@ -56,8 +56,11 @@
 
 (defcommand suspend () ()
   "Suspends the system (to RAM)"
-  (run-shell-command
-   "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend"))
+  (progn
+    (run-shell-command
+     "xscreensaver-command -lock")
+    (run-shell-command
+     "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")))
 
 (defcommand show-battery-state () ()
   "Shows the state of the first battery"
