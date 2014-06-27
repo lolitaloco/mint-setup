@@ -5,7 +5,7 @@ echo
 echo Downloading and installing Emacs from source
 echo
 
-apt-get install -y libtiff
+apt-get install -y libtiff-dev
 
 rm -rf ~/mint_setup_tmp/emacs
 mkdir ~/mint_setup_tmp/emacs
