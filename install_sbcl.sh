@@ -8,12 +8,12 @@ apt-get -y install clisp
 
 rm -rf ~/mint_setup_tmp/sbcl
 mkdir -p ~/mint_setup_tmp/sbcl
-curl "http://aarnet.dl.sourceforge.net/project/sbcl/sbcl/1.1.18/sbcl-1.1.18-source.tar.bz2" > sbcl-source.tar.bz2
+curl "http://aarnet.dl.sourceforge.net/project/sbcl/sbcl/1.2.2/sbcl-1.2.2-source.tar.bz2" > sbcl-source.tar.bz2
 cp sbcl-source.tar.bz2 ~/mint_setup_tmp/sbcl
 pushd ~/mint_setup_tmp/sbcl
 bunzip2 sbcl-source.tar.bz2
 tar -xvf sbcl-source.tar
-cd sbcl-1.1.18
+cd sbcl-1.2.2
 sh make.sh clisp
 INSTALL_ROOT=/usr/local sh install.sh
 popd
