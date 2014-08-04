@@ -96,15 +96,6 @@
   "Start Spotify unless it is already running, in which case focus it."
   (run-or-raise "spotify" '(:class "Spotify")))
 
-(defcommand thunderbird () ()
-  "Start Thunderbird unless it is already running, in which case focus it."
-  (run-or-raise "thunderbird" '(:class "Thunderbird")))
-
-;; can't use :class here as NixNote doesn't set a sensible one
-(defcommand nixnote () ()
-  "Start Nixnote unless it is already running, in which case focus it."
-  (run-or-raise "nixnote" '(:title "NixNote")))
-
 (let ((home (sb-unix::posix-getenv "HOME")))
 
   ;; X setup
@@ -120,8 +111,6 @@
   (define-key *root-map* (kbd "d") "firefox")
   (define-key *root-map* (kbd "D") "chromium")
   (define-key *root-map* (kbd "c") "terminal")
-  (define-key *root-map* (kbd "T") "thunderbird")
-  (define-key *root-map* (kbd "N") "nixnote")
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
