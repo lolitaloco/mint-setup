@@ -20,3 +20,5 @@ alias gss='git stash save'
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PATH="$PATH:/usr/local/go/bin"
