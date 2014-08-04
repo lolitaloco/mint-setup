@@ -41,7 +41,6 @@ if [ ! -f ~/bin/gsa          ]; then ln -s $(pwd)/conf/bin/gsa                  
 if [ ! -f ~/bin/hdmi1        ]; then ln -s $(pwd)/conf/bin/hdmi1                           ~/bin/hdmi1	      ; fi
 if [ ! -f ~/bin/lock_dvd     ]; then ln -s $(pwd)/conf/bin/lock_dvd                        ~/bin/lock_dvd     ; fi
 if [ ! -f ~/bin/lvds1        ]; then ln -s $(pwd)/conf/bin/lvds1                           ~/bin/lvds1        ; fi
-if [ ! -f ~/bin/markdownify  ]; then ln -s $(pwd)/conf/bin/markdownify/markdownify_cli.php ~/bin/markdownify  ; fi
 if [ ! -f ~/bin/swapcaps_mac ]; then ln -s $(pwd)/conf/bin/swapcaps_mac                    ~/bin/swapcaps_mac ; fi
 if [ ! -f ~/bin/swapcaps     ]; then ln -s $(pwd)/conf/bin/swapcaps                        ~/bin/swapcaps     ; fi
 if [ ! -f ~/bin/unlock_dvd   ]; then ln -s $(pwd)/conf/bin/unlock_dvd                      ~/bin/unlock_dvd   ; fi
