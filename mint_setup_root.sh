@@ -31,5 +31,6 @@ chmod a+x /etc/pm/sleep.d/swapcaps
 ./install_rsense.sh
 ./install_go.sh
 ./install_mac_kb.sh
+./install_virtualbox.sh
 
 rm -rf ~/mint_setup_tmp
