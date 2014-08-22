@@ -81,6 +81,7 @@ apt-get -y install \
         postgresql \
         pwgen \
         python-pip \
+        racket \
         rdesktop \
         shtool \
         subversion \
