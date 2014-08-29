@@ -69,6 +69,7 @@ apt-get -y install \
         lynx \
         lyx \
         markdown \
+        mercurial \
         nautilus \
         nemo \
         net-tools \
