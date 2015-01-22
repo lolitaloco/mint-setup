@@ -72,3 +72,8 @@ if [ ! -d ~/.config/sublime-text-3 ]; then ln -s $(pwd)/conf/sublime-text-3 ~/.c
 
 echo Configuring Git
 git config --global push.default simple
+
+echo Switching to zsh and installing Oh My ZSH
+chsh -s /usr/bin/zsh
+curl -L http://install.ohmyz.sh | sh
+ln $(pwd)/conf/zsh/mint-setup.zsh ~/.oh-my-zsh/custom/mint-setup.zsh

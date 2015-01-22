@@ -99,7 +99,8 @@ apt-get -y install \
         xsane \
         xscreensaver \
         xscreensaver-gl \
-        xtightvncviewer
+        xtightvncviewer \
+        zsh
 
 echo
 echo Configure VICE
