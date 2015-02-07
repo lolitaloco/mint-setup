@@ -84,6 +84,8 @@ apt-get -y install \
         python-pip \
         racket \
         rdesktop \
+        sbcl \
+        skype \
         shtool \
         subversion \
         terminator \
@@ -99,7 +101,8 @@ apt-get -y install \
         xsane \
         xscreensaver \
         xscreensaver-gl \
-        xtightvncviewer
+        xtightvncviewer \
+        zsh
 
 echo
 echo Configure VICE
@@ -111,7 +114,6 @@ rm -f /etc/pm/sleep.d/swapcaps
 ln -s $(pwd)/conf/bin/swapcaps /etc/pm/sleep.d/swapcaps
 chmod a+x /etc/pm/sleep.d/swapcaps
 
-./install_sbcl.sh
 ./install_stumpwm.sh
 ./install_spotify.sh
 ./install_sublime.sh
