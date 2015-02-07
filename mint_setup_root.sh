@@ -26,6 +26,7 @@ apt-get -y install \
         dosbox \
         ec2-api-tools \
         eclipse \
+        fortune \
         frotz \
         g++ \
         geeqie \
