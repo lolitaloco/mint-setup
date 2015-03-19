@@ -93,6 +93,7 @@ apt-get -y install \
         texinfo \
         tmux \
         tofrodos \
+        tree \
         unison \
         usb-creator-gtk \
         vice \
