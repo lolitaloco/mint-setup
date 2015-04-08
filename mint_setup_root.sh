@@ -26,6 +26,7 @@ apt-get -y install \
         dosbox \
         ec2-api-tools \
         eclipse \
+        editorconfig \
         fortune \
         frotz \
         g++ \
