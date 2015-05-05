@@ -2,7 +2,7 @@
 set -e
 
 echo
-echo Downloading and installing Emacs from source
+echo Installing Chrome
 echo
 
 apt-get install -y libxss1
