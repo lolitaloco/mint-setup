@@ -1,8 +1,9 @@
 #!/bin/bash
 set -e
 
-echo Linking custom config
+echo Linking custom X and WM config
 if [ ! -f ~/.xinitrc      ]; then ln -s $(pwd)/conf/x/xinitrc ~/.xinitrc                      ; fi
+if [ ! -f ~/.Xresources   ]; then ln -s $(pwd)/conf/x/Xresources ~/.Xresources                ; fi
 if [ ! -f ~/.stumpwmrc    ]; then ln -s $(pwd)/conf/stumpwm/stumpwmrc ~/.stumpwmrc            ; fi
 if [ ! -f ~/.tmux.conf    ]; then ln -s $(pwd)/conf/tmux/tmux.conf ~/.tmux.conf               ; fi
 if [ ! -f ~/.xscreensaver ]; then ln -s $(pwd)/conf/xscreensaver/xscreensaver ~/.xscreensaver ; fi
