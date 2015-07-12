@@ -4,9 +4,7 @@ set -e
 echo
 echo Make StumpWM use SBCL, not CLISP
 apt-get purge -y clisp
-if !(grep -q sbcl /etc/profile)
-  then echo export LISP=sbcl >> /etc/profile
-fi
+cp -f $(pwd)/conf/stumpwm/sbcl.sh /etc/profile.d/sbcl.sh
 
 echo
 echo Install StumpWM and dependencies
