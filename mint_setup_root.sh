@@ -40,6 +40,7 @@ apt-get -y install \
         gparted \
         gtk-recordmydesktop \
         hfsprogs \
+        htop \
         inform \
         inotify-tools \
         irssi \
