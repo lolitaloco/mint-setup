@@ -101,6 +101,7 @@ apt-get -y install \
         vice \
         vim \
         wine \
+        wireshark \
         xclip \
         xsane \
         xscreensaver \
