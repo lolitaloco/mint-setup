@@ -45,6 +45,7 @@ if [ ! -f ~/bin/lvds1        ]; then ln -s $(pwd)/conf/bin/lvds1                
 if [ ! -f ~/bin/swapcaps_mac ]; then ln -s $(pwd)/conf/bin/swapcaps_mac                    ~/bin/swapcaps_mac ; fi
 if [ ! -f ~/bin/swapcaps     ]; then ln -s $(pwd)/conf/bin/swapcaps                        ~/bin/swapcaps     ; fi
 if [ ! -f ~/bin/unlock_dvd   ]; then ln -s $(pwd)/conf/bin/unlock_dvd                      ~/bin/unlock_dvd   ; fi
+if [ ! -f ~/bin/rdoc-all     ]; then ln -s $(pwd)/conf/bin/rdoc-all                        ~/bin/rdoc-all     ; fi
 
 echo Getting WineTricks for future use
 if [ -f ~/bin/winetricks.sh ]; then rm -f ~/bin/winetricks.sh ; fi
