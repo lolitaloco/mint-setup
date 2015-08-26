@@ -97,6 +97,7 @@ apt-get -y install \
         tofrodos \
         tree \
         unison \
+        unison-gtk \
         usb-creator-gtk \
         vice \
         vim \
