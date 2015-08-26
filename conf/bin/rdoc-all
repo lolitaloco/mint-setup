@@ -2,4 +2,4 @@
 
 set -e
 
-gem rdoc --all --ri --no-rdoc
+terminator -x gem rdoc --all --overwrite --rdoc --ri --overwrite
