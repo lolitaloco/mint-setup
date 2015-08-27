@@ -13,10 +13,10 @@ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-echo Installing Ruby 2.2.1 with rbenv
+echo Installing Ruby 2.2.3 with rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 2.2.1
-rbenv global 2.2.1
+rbenv install 2.2.3
+rbenv global 2.2.3
 gem install bundler
 rbenv rehash
 
