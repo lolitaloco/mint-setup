@@ -5,11 +5,11 @@
   (defvar *x-setup-initialized*)
   (if (boundp '*initialized*)
       (message "Already initialized, so skipping X setup.")
-    (progn
-      (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
-      (run-shell-command "nm-applet --sm-disable")
-      (run-shell-command "xscreensaver &")
-      (setq *x-setup-initialized* t))))
+      (progn
+        (run-shell-command "trayer --SetDockType false --transparent false --SetPartialStrut --widthtype --expand false --width 50")
+        (run-shell-command "nm-applet --sm-disable")
+        (run-shell-command "xscreensaver &")
+        (setq *x-setup-initialized* t))))
 
 (defun amixer-set-master (set-to)
   "Uses amixer to set Master, echoing that part of the response that includes the volume."
@@ -18,11 +18,16 @@
     (concatenate 'string "amixer set Master " set-to " | grep '\[*%\]'")
     t)))
 
+(defun xbacklight-inc (by)
+  "Uses xbacklight to increment (or decrement) the backlight level"
+  (run-shell-command (concatenate 'string "xbacklight " by))
+  (message (concatenate 'string "backlight " (run-shell-command "xbacklight" t))))
+
 (defun find-pathname-recursive (pathname-list)
   (let ((possible-pathname (car pathname-list)))
     (if (probe-file possible-pathname)
         possible-pathname
-      (find-pathname-recursive (cdr pathname-list)))))
+        (find-pathname-recursive (cdr pathname-list)))))
 
 (defun bat-pathname ()
   (let ((possible-pathnames '("/sys/class/power_supply/BAT1" "/sys/class/power_supply/BAT0")))
@@ -30,76 +35,87 @@
 
 (defun now-pathname ()
   (let ((possible-pathnames `(,(concatenate 'string (bat-pathname) "/" "energy_now")
-                              ,(concatenate 'string (bat-pathname) "/" "charge_now"))))
+                               ,(concatenate 'string (bat-pathname) "/" "charge_now"))))
     (find-pathname-recursive possible-pathnames)))
 
 (defun full-pathname ()
   (let ((possible-pathnames `(,(concatenate 'string (bat-pathname) "/" "energy_full")
-                              ,(concatenate 'string (bat-pathname) "/" "charge_full"))))
+                               ,(concatenate 'string (bat-pathname) "/" "charge_full"))))
     (find-pathname-recursive possible-pathnames)))
 
 (defun read-energy (name)
   (let ((energy-file (open name)))
     (read energy-file)))
 
+(defcommand raise-backlight () ()
+            "Raise backlight via xbacklight"
+            (xbacklight-inc "+5"))
+
+(defcommand lower-backlight () ()
+            "Lower backlight via xbacklight"
+            (xbacklight-inc "-5"))
+
 (defcommand raise-volume () ()
-  "Raise volume via amixer"
-  (amixer-set-master "5+"))
+            "Raise volume via amixer"
+            (amixer-set-master "5+"))
 
 (defcommand lower-volume () ()
-  "Lower volume via amixer"
-  (amixer-set-master "5-"))
+            "Lower volume via amixer"
+            (amixer-set-master "5-"))
 
 (defcommand toggle-mute-volume () ()
-  "Toggle volume mute via amixer"
-  (amixer-set-master "toggle"))
+            "Toggle volume mute via amixer"
+            (amixer-set-master "toggle"))
 
 (defcommand suspend () ()
-  "Suspends the system (to RAM)"
-  (progn
-    (run-shell-command
-     "xscreensaver-command -lock")
-    (run-shell-command
-     "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")))
+            "Suspends the system (to RAM)"
+            (progn
+              (run-shell-command
+               "xscreensaver-command -lock")
+              (run-shell-command
+               "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")))
 
 (defcommand show-battery-state () ()
-  "Shows the state of the first battery"
-  (let ((energy-now (read-energy (now-pathname)))
-        (energy-full (read-energy (full-pathname))))
-    (echo (concatenate
-           'string
-           (write-to-string (float (* (/ energy-now energy-full) 100)))
-           "%"))))
+            "Shows the state of the first battery"
+            (let ((energy-now (read-energy (now-pathname)))
+                  (energy-full (read-energy (full-pathname))))
+              (echo (concatenate
+                     'string
+                     (write-to-string (float (* (/ energy-now energy-full) 100)))
+                     "%"))))
 
 (defcommand screen-saver () ()
-  "Turns off the screen until a key is pressed"
-  (run-shell-command
-   "xscreensaver-command -lock"))
+            "Turns off the screen until a key is pressed"
+            (run-shell-command
+             "xscreensaver-command -lock"))
 
 (defcommand nemo () ()
-  "Start Nemo unless it is already running, in which case focus it."
-  (run-or-raise "nemo --no-desktop" '(:class "Nemo")))
+            "Start Nemo unless it is already running, in which case focus it."
+            (run-or-raise "nemo --no-desktop" '(:class "Nemo")))
 
 (defcommand firefox () ()
-  "Start Firefox unless it is already running, in which case focus it."
-  (run-or-raise "firefox" '(:class "Firefox")))
+            "Start Firefox unless it is already running, in which case focus it."
+            (run-or-raise "firefox" '(:class "Firefox")))
 
 (defcommand chromium () ()
-  "Start Chromium unless it is already running, in which case focus it."
-  (run-or-raise "chromium-browser" '(:class "Chromium-browser")))
+            "Start Chromium unless it is already running, in which case focus it."
+            (run-or-raise "chromium-browser" '(:class "Chromium-browser")))
 
 (defcommand terminal () ()
-  "Start terminator unless it is already running, in which case focus it."
-  (run-or-raise "terminator" '(:class "Terminator")))
+            "Start terminator unless it is already running, in which case focus it."
+            (run-or-raise "terminator" '(:class "Terminator")))
 
 (defcommand spotify () ()
-  "Start Spotify unless it is already running, in which case focus it."
-  (run-or-raise "spotify" '(:class "Spotify")))
+            "Start Spotify unless it is already running, in which case focus it."
+            (run-or-raise "spotify" '(:class "Spotify")))
 
 (let ((home (sb-unix::posix-getenv "HOME")))
 
   ;; X setup
   (x-setup-once)
+
+  (define-keysym #x1008ff02 "XF86MonBrightnessUp")
+  (define-keysym #x1008ff03 "XF86MonBrightnessDown")
 
   ;; my hotkeys (thanks in part to http://stumpwm.svkt.org/cgi-bin/wiki.pl)
   (define-key *root-map* (kbd "B") "show-battery-state")
@@ -114,6 +130,8 @@
   (define-key *top-map* (kbd "XF86AudioRaiseVolume") "raise-volume")
   (define-key *top-map* (kbd "XF86AudioLowerVolume") "lower-volume")
   (define-key *top-map* (kbd "XF86AudioMute") "toggle-mute-volume")
+  (define-key *top-map* (kbd "XF86MonBrightnessUp") "raise-backlight")
+  (define-key *top-map* (kbd "XF86MonBrightnessDown") "lower-backlight")
 
   ;; startup stuff - safe to do this multiple times
   (run-shell-command (concatenate 'string "xsetbg -border black -center " home "/Pictures/stumpwm_wallpaper.jpg"))

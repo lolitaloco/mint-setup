@@ -108,6 +108,7 @@ apt-get -y install \
         vim \
         wine \
         wireshark \
+        xbacklight \
         xclip \
         xsane \
         xscreensaver \
