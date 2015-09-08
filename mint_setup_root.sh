@@ -120,6 +120,7 @@ rm -f /etc/pm/sleep.d/swapcaps
 ln -s $(pwd)/conf/bin/swapcaps /etc/pm/sleep.d/swapcaps
 chmod a+x /etc/pm/sleep.d/swapcaps
 
+./install_firefox.sh
 ./install_stumpwm.sh
 ./install_spotify.sh
 ./install_sublime.sh
