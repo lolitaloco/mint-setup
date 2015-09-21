@@ -10,6 +10,11 @@ apt-get update -y
 apt-get upgrade -y
 
 echo
+echo Upgrading the kernel
+apt-get -y install linux-generic-lts-vivid
+
+
+echo
 echo Install miscellaneous stuff
 apt-get -y install \
         acidrip \
