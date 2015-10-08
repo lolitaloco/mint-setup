@@ -65,7 +65,7 @@
 
 (defcommand toggle-mute-volume () ()
             "Toggle volume mute via amixer"
-            (amixer-set-master "toggle"))
+            (run-shell-command "amixer -D pulse set Master toggle"))
 
 (defcommand suspend () ()
             "Suspends the system (to RAM)"
