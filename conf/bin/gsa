@@ -1,14 +1,16 @@
 #!/usr/bin/env ruby
 
+require 'pry'
 require 'tempfile'
 
-def paths_in_home
-  home = ENV['HOME']
-  Dir.entries(home).map { |entry| File.join(home, entry) }.select { |path| File.directory?(path) }
-end 
+def paths(under)
+  Dir.entries(under).map { |entry| File.join(under, entry) }.select { |path| File.directory?(path) }
+end
 
-def git_paths_in_home
-  paths_in_home.select { |path| Dir.exists?(File.join(path, '.git')) }
+def git_paths
+  paths = paths(ENV['HOME']) + paths(File.join(ENV['HOME'], 'code'))
+  paths = paths.reject { |path| /\/\.+$/.match(path) }
+  paths.select { |path| Dir.exists?(File.join(path, '.git')) }
 end
 
 def with_tempfile
@@ -21,11 +23,11 @@ def with_tempfile
   end
 end
 
-git_paths_in_home.each do |dir|
+git_paths.each do |dir|
   with_tempfile do |temppath|
     system("cd #{dir} && git status > #{temppath}")
     status = File.read(temppath)
-    if status.include?('is ahead') or !status.include?('working directory clean')
+    if status.include?('is ahead') or !(status.include?('working directory clean') || status.include?('nothing to commit'))
       puts
       puts dir
       puts status
