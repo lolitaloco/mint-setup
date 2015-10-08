@@ -109,6 +109,18 @@
             "Start Spotify unless it is already running, in which case focus it."
             (run-or-raise "spotify" '(:class "Spotify")))
 
+(defcommand spotify-next-track () ()
+            "Skip to the next track in Spotify."
+            (run-shell-command "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"))
+
+(defcommand spotify-previous-track () ()
+            "Skip to the previous track in Spotify."
+            (run-shell-command "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"))
+
+(defcommand spotify-toggle-play () ()
+            "Toggles Play / Pause in Spotify."
+            (run-shell-command "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"))
+
 (let ((home (sb-unix::posix-getenv "HOME")))
 
   ;; X setup
@@ -124,6 +136,9 @@
   (define-key *root-map* (kbd "q") "suspend")
   (define-key *root-map* (kbd "L") "screen-saver")
   (define-key *root-map* (kbd "M-s") "spotify")
+  (define-key *root-map* (kbd "]") "spotify-next-track")
+  (define-key *root-map* (kbd "[") "spotify-previous-track")
+  (define-key *root-map* (kbd "\\") "spotify-toggle-play")
   (define-key *root-map* (kbd "d") "firefox")
   (define-key *root-map* (kbd "D") "chromium")
   (define-key *root-map* (kbd "c") "terminal")
