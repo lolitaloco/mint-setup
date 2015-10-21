@@ -150,7 +150,6 @@
 
   ;; startup stuff - safe to do this multiple times
   (run-shell-command (concatenate 'string "xsetbg -border black -center " home "/Pictures/stumpwm_wallpaper.jpg"))
-  (run-shell-command "emacs")
 
   ;; swap CAPS and CTRL
   (run-shell-command "setxkbmap -option ctrl:swapcaps"))
