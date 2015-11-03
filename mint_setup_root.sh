@@ -26,6 +26,9 @@ apt-get -y install \
         checkinstall \
         chromium-browser \
         cinnamon-screensaver \
+        clamav \
+        clamav-freshclam \
+        clamtk \
         curl \
         dia \
         dosbox \
