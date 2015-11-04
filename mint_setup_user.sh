@@ -53,8 +53,7 @@ wget http://www.kegel.com/wine/winetricks
 mv $(pwd)/winetricks ~/bin/winetricks.sh
 chmod a+x ~/bin/winetricks.sh
 
-echo Setting up rbenv
-./install_rbenv.sh
+./install_rvm.sh
 
 echo Configuring Gnome to be less intrusive
 gconftool-2 -s -t bool /apps/nautilus/preferences/show_desktop false
@@ -65,8 +64,7 @@ curl -O http://beta.quicklisp.org/quicklisp.lisp
 if [ ! -d ~/quicklisp ]; then sbcl --load quicklisp.lisp --eval "(progn (quicklisp-quickstart:install)(quit))" ; fi
 
 echo Configuring RSense
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 ruby /opt/rsense-0.3/etc/config.rb > ~/.rsense
 
 echo Configuring Sublime
